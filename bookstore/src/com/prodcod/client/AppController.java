@@ -6,6 +6,8 @@ import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.prodcod.client.presenter.PagePresenter;
+import com.prodcod.client.presenter.events.RegisterNewUserEvent;
+import com.prodcod.client.presenter.events.RegisterNewUserEventHandler;
 import com.prodcod.client.presenter.login.LoginPresenter;
 import com.prodcod.client.presenter.login.LoginPresenter.LoginView;
 import com.prodcod.client.presenter.registration.RegistrationPresenter;
@@ -19,7 +21,7 @@ import com.prodcod.client.view.registration.RegistrationPage;
  * @author BruceWayne
  *
  */
-public class AppController implements PagePresenter, ValueChangeHandler<String> {
+public class AppController implements PagePresenter, ValueChangeHandler<String> {//, RegisterNewUserEventHandler {
 	  private final HandlerManager eventBus;
 	  private HasWidgets container;
 	  
@@ -103,7 +105,7 @@ public class AppController implements PagePresenter, ValueChangeHandler<String> 
 
 	      if (token.equals("login")) {	        
 			LoginView loginView = new LoginPage();
-			presenter = new LoginPresenter(loginView);			
+			presenter = new LoginPresenter(loginView, eventBus);			
 	      }
 	      else if (token.equals("registration")) {
 			RegistrationView registrationView = new RegistrationPage();
@@ -141,8 +143,21 @@ public class AppController implements PagePresenter, ValueChangeHandler<String> 
 
 	@Override
 	public void bind() {
-		// TODO Auto-generated method stub
 	    History.addValueChangeHandler(this);
+	    
+	    eventBus.addHandler(RegisterNewUserEvent.TYPE,
+	            new RegisterNewUserEventHandler() {
+	              public void onRegisterNewUser(RegisterNewUserEvent event) {
+//	                doEditContact(event.getId());
+	        	      History.newItem("registration");		
+	              }
+	            });  
 
-	} 
+
+	}
+
+//	@Override
+//	public void onRegisterNewUser(RegisterNewUserEvent event) {
+//	      History.newItem("registration");		
+//	} 
 }

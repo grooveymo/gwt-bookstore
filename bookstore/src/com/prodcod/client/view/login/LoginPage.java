@@ -11,14 +11,10 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.prodcod.client.presenter.PagePresenter;
 import com.prodcod.client.presenter.login.LoginPresenter;
-import com.prodcod.client.presenter.login.LoginPresenter.LoginView;
-import com.prodcod.client.presenter.registration.RegistrationPresenter;
-import com.prodcod.client.presenter.registration.RegistrationPresenter.RegistrationView;
-import com.prodcod.client.view.registration.RegistrationPage;
 
 public class LoginPage extends Composite implements LoginPresenter.LoginView{
 
@@ -42,6 +38,8 @@ public class LoginPage extends Composite implements LoginPresenter.LoginView{
 
 	@UiField
 	Button submitButton;
+	
+	private LoginPresenter presenter;
 	
 	public LoginPage() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -75,13 +73,17 @@ public class LoginPage extends Composite implements LoginPresenter.LoginView{
 		return this;
 	}
 	
+	public void setPresenter(LoginPresenter presenter) {
+		this.presenter = presenter;
+	}
+	
 	@UiHandler("registrationLink")
 	public void onClickRegistration(ClickEvent e) {
-		//TODO - navigate to registration page.
-		RegistrationView registrationView = new RegistrationPage();
-		RegistrationPresenter registrationPresenter = new RegistrationPresenter(registrationView);
-		
-		registrationPresenter.go(RootPanel.get());
+//		RegistrationView registrationView = new RegistrationPage();
+//		RegistrationPresenter registrationPresenter = new RegistrationPresenter(registrationView);
+//		
+//		registrationPresenter.go(RootPanel.get());
+		presenter.navigateToRegistrationPage();
 
 	}
 
