@@ -58,7 +58,10 @@
 				<g:TextBox ui:field="confirmPassword" />
 			</div>							
 		</div>
-				
+
+	<p class='textbox'>
+		This is a test message. See ref: http://scratch99.com/wordpress/hacks/wordpress-simple-css-text-boxes-in-posts/
+	</p>				
 		<div id='submitPanel'>
 			<g:Button ui:field='submitButton'>submit</g:Button>
 		</div>

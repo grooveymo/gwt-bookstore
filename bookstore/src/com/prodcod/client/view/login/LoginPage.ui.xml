@@ -13,6 +13,7 @@
 		<div id='loginPanel'>
 			<div id='usernamePanel'>
 				<span class="fieldName">Username: </span>				
+				
 				<g:TextBox ui:field="userName" />							
 			</div>		
 			<div id='passwordPanel'>

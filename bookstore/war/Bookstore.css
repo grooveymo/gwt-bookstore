@@ -36,7 +36,11 @@ h1 {
 /**********************************************************************************/
 /** BookStore styles **/
 /**********************************************************************************/
-
+div#loginBody, #registrationBody {
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+}
 #loginBody {
 	align : center;
 	border : grey 1px solid;
@@ -89,3 +93,11 @@ a .registrationPanel {
 	padding:10px;
 }
 
+
+.textbox {
+	padding:2px 6px 4px 6px; 
+	color: #555555; 
+	background-color: #eeeeee; 
+	border: #dddddd 2px solid;
+	font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+	}
