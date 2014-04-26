@@ -1,0 +1,15 @@
+# java suffix
+
+*.class
+
+*.jar
+*.war
+*.ear
+
+#eclipse
+.metadata/
+test-classes/
+
+#gwt
+gwt-unitCache/
+RemoteSystemsTempFiles/

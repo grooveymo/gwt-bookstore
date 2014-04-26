@@ -1,0 +1,35 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>	
+	</ui:style>
+	<g:HTMLPanel>
+	
+	<div id='loginBody'>
+		<div id='validationPanel'>
+			<g:Label ui:field="validationMessage" />
+		</div>
+		
+		<div id='loginPanel'>
+			<div id='usernamePanel'>
+				<span class="fieldName">Username: </span>				
+				<g:TextBox ui:field="userName" />							
+			</div>		
+			<div id='passwordPanel'>
+				<span class="fieldName">Password: </span>				
+				<g:TextBox ui:field="password" />
+			</div>		
+		</div>
+		
+		<div id='registration'>
+			<g:Anchor ui:field="registrationLink">registration</g:Anchor>
+		</div>
+		
+		<div id='submitPanel'>
+			<g:Button ui:field='submitButton'>submit</g:Button>
+		</div>
+		
+	</div>
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,70 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<div id='registrationBody'>
+		
+		<div id='validationPanel'>
+			<g:Label ui:field="validationMessage" />
+		</div>
+		
+		<div id='userDetails'>
+			<div id='forenamePanel'>
+				<g:Label>Forename: </g:Label>				
+				<g:TextBox ui:field="forename" />							
+			</div>		
+			<div id='surnamePanel'>
+				<g:Label>Surname: </g:Label>				
+				<g:TextBox ui:field="surname" />							
+			</div>					
+			<div id='addressPanel'>
+				<g:Label>First Line of Address: </g:Label>				
+				<g:TextBox ui:field="firstLineAddress" />
+			</div>		
+			<div id='cityPanel'>
+				<g:Label>City: </g:Label>				
+				<g:TextBox ui:field="city" />							
+			</div>		
+			<div id='postcodePanel'>
+				<g:Label>Postal code: </g:Label>				
+				<g:TextBox ui:field="postalCode" />							
+			</div>					
+			<div id='emailPanel'>
+				<g:Label>Email: </g:Label>				
+				<g:TextBox ui:field="email" />							
+			</div>		
+			<div id='phonePanel'>
+				<g:Label>Phone: </g:Label>				
+				<g:TextBox ui:field="phone" />							
+			</div>					
+		</div>
+
+		<div id='accountDetails'>
+			<div id='usernamePanel'>
+				<g:Label>Username: </g:Label>				
+				<g:TextBox ui:field="username" />							
+			</div>		
+			<div id='passwordPanel'>
+				<g:Label>Password: </g:Label>				
+				<g:TextBox ui:field="password" />
+			</div>
+			<div id='passwordConfirmPanel'>
+				<g:Label>Confirm Password: </g:Label>				
+				<g:TextBox ui:field="confirmPassword" />
+			</div>							
+		</div>
+				
+		<div id='submitPanel'>
+			<g:Button ui:field='submitButton'>submit</g:Button>
+		</div>
+		
+	</div>
+	
+	
+	</g:HTMLPanel>
+</ui:UiBinder> 

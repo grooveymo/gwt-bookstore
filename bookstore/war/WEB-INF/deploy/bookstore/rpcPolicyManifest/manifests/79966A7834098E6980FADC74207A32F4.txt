@@ -1,0 +1,2 @@
+serviceClass: com.prodcod.client.GreetingService
+path: B46925EC93176F80014E57904D611992.gwt.rpc
