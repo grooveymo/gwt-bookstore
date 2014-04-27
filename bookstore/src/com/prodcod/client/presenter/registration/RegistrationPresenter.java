@@ -1,10 +1,12 @@
 package com.prodcod.client.presenter.registration;
 
 import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.prodcod.client.presenter.PagePresenter;
+import com.prodcod.client.presenter.events.ShoppingEvent;
 
 public class RegistrationPresenter implements PagePresenter{
 
@@ -25,13 +27,19 @@ public class RegistrationPresenter implements PagePresenter{
 		
 		void setValidationMessage(final String message);
 		
+		void setPresenter(RegistrationPresenter presenter);
+		
 		Widget asWidget();
 	}
 	
 	private final RegistrationView registrationPage;
 	
-	public RegistrationPresenter(RegistrationView registrationPage) {
+	private final HandlerManager eventBus;
+	
+	public RegistrationPresenter(RegistrationView registrationPage, HandlerManager eventBus) {
 		this.registrationPage = registrationPage;		
+		this.eventBus = eventBus;
+		registrationPage.setPresenter(this);
 	}
 	
 	@Override
@@ -45,6 +53,10 @@ public class RegistrationPresenter implements PagePresenter{
 	public void bind() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void navigateToShoppingPage() {
+		eventBus.fireEvent(new ShoppingEvent());
 	}
 
 

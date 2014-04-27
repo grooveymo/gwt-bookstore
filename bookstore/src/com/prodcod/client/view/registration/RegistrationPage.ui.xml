@@ -62,6 +62,11 @@
 	<p class='textbox'>
 		This is a test message. See ref: http://scratch99.com/wordpress/hacks/wordpress-simple-css-text-boxes-in-posts/
 	</p>				
+	
+		<div id='shopping'>
+			<g:Anchor ui:field="shoppingLink">shopping</g:Anchor>
+		</div>
+	
 		<div id='submitPanel'>
 			<g:Button ui:field='submitButton'>submit</g:Button>
 		</div>

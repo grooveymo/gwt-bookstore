@@ -7,12 +7,14 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.prodcod.client.presenter.registration.RegistrationPresenter;
 import com.prodcod.client.presenter.registration.RegistrationPresenter.RegistrationView;
 
 public class RegistrationPage extends Composite implements RegistrationView {
@@ -58,8 +60,13 @@ public class RegistrationPage extends Composite implements RegistrationView {
 	TextBox confirmPassword;
 	
 	@UiField
+	Anchor shoppingLink;
+
+	@UiField
 	Button submitButton;
 
+	private RegistrationPresenter presenter;
+	
 	public RegistrationPage() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
@@ -72,6 +79,11 @@ public class RegistrationPage extends Composite implements RegistrationView {
 	@UiHandler("submitButton")
 	void onClick(ClickEvent e) {
 		Window.alert("Hello!");
+	}
+
+	@UiHandler("shoppingLink")
+	void onClickShopping(ClickEvent e) {
+		presenter.navigateToShoppingPage();
 	}
 
 	@Override
@@ -132,6 +144,12 @@ public class RegistrationPage extends Composite implements RegistrationView {
 	@Override
 	public void setValidationMessage(String message) {
 		validationMessage.setText(message);
+	}
+
+
+	@Override
+	public void setPresenter(RegistrationPresenter presenter) {
+		this.presenter = presenter;
 	}
 
 }

@@ -8,12 +8,17 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.prodcod.client.presenter.PagePresenter;
 import com.prodcod.client.presenter.events.RegisterNewUserEvent;
 import com.prodcod.client.presenter.events.RegisterNewUserEventHandler;
+import com.prodcod.client.presenter.events.ShoppingEvent;
+import com.prodcod.client.presenter.events.ShoppingEventHandler;
 import com.prodcod.client.presenter.login.LoginPresenter;
 import com.prodcod.client.presenter.login.LoginPresenter.LoginView;
 import com.prodcod.client.presenter.registration.RegistrationPresenter;
 import com.prodcod.client.presenter.registration.RegistrationPresenter.RegistrationView;
+import com.prodcod.client.presenter.shopping.ShoppingPresenter;
+import com.prodcod.client.presenter.shopping.ShoppingPresenter.ShoppingView;
 import com.prodcod.client.view.login.LoginPage;
 import com.prodcod.client.view.registration.RegistrationPage;
+import com.prodcod.client.view.shopping.ShoppingPage;
 
 /**
  * PagePresenter exposes go() method which enables page navigation
@@ -109,7 +114,11 @@ public class AppController implements PagePresenter, ValueChangeHandler<String> 
 	      }
 	      else if (token.equals("registration")) {
 			RegistrationView registrationView = new RegistrationPage();
-			presenter = new RegistrationPresenter(registrationView);				
+			presenter = new RegistrationPresenter(registrationView, eventBus);				
+	      }
+	      else if (token.equals("shopping")) {
+			ShoppingView shoppingView = new ShoppingPage();
+			presenter = new ShoppingPresenter(shoppingView, eventBus);				
 	      }
 	      
 	      if (presenter != null) {
@@ -153,6 +162,14 @@ public class AppController implements PagePresenter, ValueChangeHandler<String> 
 	              }
 	            });  
 
+
+	    eventBus.addHandler(ShoppingEvent.TYPE,
+	            new ShoppingEventHandler() {
+	              public void onShopping(ShoppingEvent event) {
+//	                doEditContact(event.getId());
+	        	      History.newItem("shopping");		
+	              }
+	            });  
 
 	}
 
