@@ -6,7 +6,7 @@ import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.prodcod.client.presenter.PagePresenter;
-import com.prodcod.client.presenter.events.NavigateToRegisterNewUserPageEvent;
+import com.prodcod.client.event.NavigateToRegisterNewUserPageEvent;
 
 public class LoginPresenter implements PagePresenter{
 

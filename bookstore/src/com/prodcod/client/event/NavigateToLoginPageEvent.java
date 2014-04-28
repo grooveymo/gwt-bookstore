@@ -1,4 +1,4 @@
-package com.prodcod.client.presenter.events;
+package com.prodcod.client.event;
 
 import com.google.gwt.event.shared.GwtEvent;
 
