@@ -6,7 +6,7 @@ import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.prodcod.client.presenter.PagePresenter;
-import com.prodcod.client.presenter.events.ShoppingEvent;
+import com.prodcod.client.presenter.events.NavigateToShoppingPageEvent;
 
 public class RegistrationPresenter implements PagePresenter{
 
@@ -56,7 +56,7 @@ public class RegistrationPresenter implements PagePresenter{
 	}
 
 	public void navigateToShoppingPage() {
-		eventBus.fireEvent(new ShoppingEvent());
+		eventBus.fireEvent(new NavigateToShoppingPageEvent());
 	}
 
 

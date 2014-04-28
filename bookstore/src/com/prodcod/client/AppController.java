@@ -6,10 +6,10 @@ import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.prodcod.client.presenter.PagePresenter;
-import com.prodcod.client.presenter.events.RegisterNewUserEvent;
-import com.prodcod.client.presenter.events.RegisterNewUserEventHandler;
-import com.prodcod.client.presenter.events.ShoppingEvent;
-import com.prodcod.client.presenter.events.ShoppingEventHandler;
+import com.prodcod.client.presenter.events.NavigateToRegisterNewUserPageEvent;
+import com.prodcod.client.presenter.events.NavigateToRegisterNewUserPageEventHandler;
+import com.prodcod.client.presenter.events.NavigateToShoppingPageEvent;
+import com.prodcod.client.presenter.events.NavigateToShoppingPageEventHandler;
 import com.prodcod.client.presenter.login.LoginPresenter;
 import com.prodcod.client.presenter.login.LoginPresenter.LoginView;
 import com.prodcod.client.presenter.registration.RegistrationPresenter;
@@ -154,18 +154,18 @@ public class AppController implements PagePresenter, ValueChangeHandler<String> 
 	public void bind() {
 	    History.addValueChangeHandler(this);
 	    
-	    eventBus.addHandler(RegisterNewUserEvent.TYPE,
-	            new RegisterNewUserEventHandler() {
-	              public void onRegisterNewUser(RegisterNewUserEvent event) {
+	    eventBus.addHandler(NavigateToRegisterNewUserPageEvent.TYPE,
+	            new NavigateToRegisterNewUserPageEventHandler() {
+	              public void onRegisterNewUser(NavigateToRegisterNewUserPageEvent event) {
 //	                doEditContact(event.getId());
 	        	      History.newItem("registration");		
 	              }
 	            });  
 
 
-	    eventBus.addHandler(ShoppingEvent.TYPE,
-	            new ShoppingEventHandler() {
-	              public void onShopping(ShoppingEvent event) {
+	    eventBus.addHandler(NavigateToShoppingPageEvent.TYPE,
+	            new NavigateToShoppingPageEventHandler() {
+	              public void onDisplayShoppingPage(NavigateToShoppingPageEvent event) {
 //	                doEditContact(event.getId());
 	        	      History.newItem("shopping");		
 	              }
