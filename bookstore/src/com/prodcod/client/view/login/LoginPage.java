@@ -24,6 +24,7 @@ public class LoginPage extends Composite implements LoginPresenter.LoginView{
 	interface LoginPageUiBinder extends UiBinder<Widget, LoginPage> {
 	}
 
+	/*
 	@UiField
 	Label validationMessage;
 
@@ -33,40 +34,42 @@ public class LoginPage extends Composite implements LoginPresenter.LoginView{
 	@UiField
 	TextBox password;
 
-	@UiField
-	Anchor registrationLink;
 
 	@UiField
 	Button submitButton;
+	*/
 	
+	@UiField
+	Anchor registrationLink;
+
 	private LoginPresenter presenter;
 	
 	public LoginPage() {
 		initWidget(uiBinder.createAndBindUi(this));
-		userName.addStyleName("fieldInput");
-		password.addStyleName("fieldInput");
+//		userName.addStyleName("fieldInput");
+//		password.addStyleName("fieldInput");
 		registrationLink.addStyleName("registrationPanel");
 	}
 
-	@Override
-	public HasClickHandlers getSubmitButton() {
-		return submitButton;
-	}
-
-	@Override
-	public HasText getUsername() {
-		return userName;
-	}
-
-	@Override
-	public HasText getPassword() {
-		return password;
-	}
-
-	@Override
-	public void setValidationMessage(final String message) {
-		validationMessage.setText(message);
-	}
+//	@Override
+//	public HasClickHandlers getSubmitButton() {
+//		return submitButton;
+//	}
+//
+//	@Override
+//	public HasText getUsername() {
+//		return userName;
+//	}
+//
+//	@Override
+//	public HasText getPassword() {
+//		return password;
+//	}
+//
+//	@Override
+//	public void setValidationMessage(final String message) {
+//		validationMessage.setText(message);
+//	}
 
 	@Override
 	public Widget asWidget() {
@@ -79,10 +82,6 @@ public class LoginPage extends Composite implements LoginPresenter.LoginView{
 	
 	@UiHandler("registrationLink")
 	public void onClickRegistration(ClickEvent e) {
-//		RegistrationView registrationView = new RegistrationPage();
-//		RegistrationPresenter registrationPresenter = new RegistrationPresenter(registrationView);
-//		
-//		registrationPresenter.go(RootPanel.get());
 		presenter.navigateToRegistrationPage();
 
 	}

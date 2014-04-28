@@ -13,10 +13,10 @@ public class LoginPresenter implements PagePresenter{
 	private final HandlerManager eventBus;
 	
 	public interface LoginView {
-		HasClickHandlers getSubmitButton();
-		HasText getUsername();
-		HasText getPassword();
-		void setValidationMessage(final String message);
+//		HasClickHandlers getSubmitButton();
+//		HasText getUsername();
+//		HasText getPassword();
+//		void setValidationMessage(final String message);
 		
 		void setPresenter(LoginPresenter presenter);
 		

@@ -6,7 +6,10 @@
 	<g:HTMLPanel>
 	
 	<div id='loginBody'>
-		<div id='validationPanel'>
+
+		<h1>Login Page</h1>
+<!-- 
+   	    <div id='validationPanel'>
 			<g:Label ui:field="validationMessage" />
 		</div>
 		
@@ -21,15 +24,18 @@
 				<g:TextBox ui:field="password" />
 			</div>		
 		</div>
-		
+-->		
 		<div id='registration'>
 			<g:Anchor ui:field="registrationLink">registration</g:Anchor>
 		</div>
 		
+	<!--  	
 		<div id='submitPanel'>
 			<g:Button ui:field='submitButton'>submit</g:Button>
 		</div>
 		
+		 -->
+	
 	</div>
 		
 	</g:HTMLPanel>
