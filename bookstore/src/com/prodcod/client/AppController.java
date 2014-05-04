@@ -5,6 +5,8 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.prodcod.client.event.NavigateToLoginPageEvent;
+import com.prodcod.client.event.NavigateToLoginPageEventHandler;
 import com.prodcod.client.event.NavigateToRegisterNewUserPageEvent;
 import com.prodcod.client.event.NavigateToRegisterNewUserPageEventHandler;
 import com.prodcod.client.event.NavigateToShoppingPageEvent;
@@ -27,154 +29,162 @@ import com.prodcod.client.view.shopping.ShoppingPage;
  *
  */
 public class AppController implements PagePresenter, ValueChangeHandler<String> {//, RegisterNewUserEventHandler {
-	  private final HandlerManager eventBus;
-	  private HasWidgets container;
-	  
-//	  public AppController(ContactsServiceAsync rpcService, HandlerManager eventBus) {
-//	    this.eventBus = eventBus;
-//	    this.rpcService = rpcService;
-//	    bind();
-//	  }
+	private final HandlerManager eventBus;
+	private HasWidgets container;
 
-	  public AppController(HandlerManager eventBus) {
-		    this.eventBus = eventBus;
-		    bind();		    
-		  }
+	//	  public AppController(ContactsServiceAsync rpcService, HandlerManager eventBus) {
+	//	    this.eventBus = eventBus;
+	//	    this.rpcService = rpcService;
+	//	    bind();
+	//	  }
 
-//	  public void bind() {
-//	    History.addValueChangeHandler(this);
+	public AppController(HandlerManager eventBus) {
+		this.eventBus = eventBus;
+		bind();		    
+	}
 
-//	    eventBus.addHandler(AddContactEvent.TYPE,
-//	        new AddContactEventHandler() {
-//	          public void onAddContact(AddContactEvent event) {
-//	            doAddNewContact();
-//	          }
-//	        });  
+	//	  public void bind() {
+	//	    History.addValueChangeHandler(this);
 
-//	  }
-	  
-//	  private void doAddNewContact() {
-//	    History.newItem("add");
-//	  }
-	  
-//	  private void doEditContact(String id) {
-//	    History.newItem("edit", false);
-//	    Presenter presenter = new EditContactPresenter(rpcService, eventBus, new EditContactView(), id);
-//	    presenter.go(container);
-//	  }
-	  
-	  
-//	  public void go(final HasWidgets container) {
-//	    this.container = container;
-//	    
-//	    if ("".equals(History.getToken())) {
-//	      History.newItem("list");
-//	    }
-//	    else {
-//	      History.fireCurrentHistoryState();
-//	    }
-//	  }
+	//	    eventBus.addHandler(AddContactEvent.TYPE,
+	//	        new AddContactEventHandler() {
+	//	          public void onAddContact(AddContactEvent event) {
+	//	            doAddNewContact();
+	//	          }
+	//	        });  
 
-//	  public void onValueChange(ValueChangeEvent<String> event) {
-//	    String token = event.getValue();
-//	    
-//	    if (token != null) {
-//	      Presenter presenter = null;
-//
-//	      if (token.equals("list")) {
-//	        presenter = new ContactsPresenter(rpcService, eventBus, new ContactsView());
-//	      }
-//	      else if (token.equals("add")) {
-//	        presenter = new EditContactPresenter(rpcService, eventBus, new EditContactView());
-//	      }
-//	      else if (token.equals("edit")) {
-//	        presenter = new EditContactPresenter(rpcService, eventBus, new EditContactView());
-//	      }
-//	      
-//	      if (presenter != null) {
-//	        presenter.go(container);
-//	      }
-//	    }
-//	  }
+	//	  }
 
-	  /**
-	   * Supports History mechanism
-	   */
+	//	  private void doAddNewContact() {
+	//	    History.newItem("add");
+	//	  }
+
+	//	  private void doEditContact(String id) {
+	//	    History.newItem("edit", false);
+	//	    Presenter presenter = new EditContactPresenter(rpcService, eventBus, new EditContactView(), id);
+	//	    presenter.go(container);
+	//	  }
+
+
+	//	  public void go(final HasWidgets container) {
+	//	    this.container = container;
+	//	    
+	//	    if ("".equals(History.getToken())) {
+	//	      History.newItem("list");
+	//	    }
+	//	    else {
+	//	      History.fireCurrentHistoryState();
+	//	    }
+	//	  }
+
+	//	  public void onValueChange(ValueChangeEvent<String> event) {
+	//	    String token = event.getValue();
+	//	    
+	//	    if (token != null) {
+	//	      Presenter presenter = null;
+	//
+	//	      if (token.equals("list")) {
+	//	        presenter = new ContactsPresenter(rpcService, eventBus, new ContactsView());
+	//	      }
+	//	      else if (token.equals("add")) {
+	//	        presenter = new EditContactPresenter(rpcService, eventBus, new EditContactView());
+	//	      }
+	//	      else if (token.equals("edit")) {
+	//	        presenter = new EditContactPresenter(rpcService, eventBus, new EditContactView());
+	//	      }
+	//	      
+	//	      if (presenter != null) {
+	//	        presenter.go(container);
+	//	      }
+	//	    }
+	//	  }
+
+	/**
+	 * Supports History mechanism
+	 */
 	@Override
 	public void onValueChange(ValueChangeEvent<String> event) {
 
 		String token = event.getValue();
-	    
-	    if (token != null) {
-	      PagePresenter presenter = null;
 
-	      if (token.equals("login")) {	        
-			LoginView loginView = new LoginPage();
-			presenter = new LoginPresenter(loginView, eventBus);			
-	      }
-	      else if (token.equals("registration")) {
-			RegistrationView registrationView = new RegistrationPage();
-			presenter = new RegistrationPresenter(registrationView, eventBus);				
-	      }
-	      else if (token.equals("shopping")) {
-			ShoppingView shoppingView = new ShoppingPage();
-			presenter = new ShoppingPresenter(shoppingView, eventBus);				
-	      }
-	      
-	      if (presenter != null) {
-	        presenter.go(container);
-	      }
-	    }
-		
+		if (token != null) {
+			PagePresenter presenter = null;
+
+			if (token.equals("login")) {	        
+				LoginView loginView = new LoginPage();
+				presenter = new LoginPresenter(loginView, eventBus);			
+			}
+			else if (token.equals("registration")) {
+				RegistrationView registrationView = new RegistrationPage();
+				presenter = new RegistrationPresenter(registrationView, eventBus);				
+			}
+			else if (token.equals("shopping")) {
+				ShoppingView shoppingView = new ShoppingPage();
+				presenter = new ShoppingPresenter(shoppingView, eventBus);				
+			}
+
+			if (presenter != null) {
+				presenter.go(container);
+			}
+		}
+
 	}
 
-	  /**
-	   * @param container RootPanel element. 'Pages' are attached/detached from this main panel
-	   */
+	/**
+	 * @param container RootPanel element. 'Pages' are attached/detached from this main panel
+	 */
 	@Override
 	public void go(HasWidgets container) {
 
-	    this.container = container;
+		this.container = container;
 
-	    if ("".equals(History.getToken())) {
-	      History.newItem("login");
-	    }
-	    else {
-	      History.fireCurrentHistoryState();
-	    }
+		if ("".equals(History.getToken())) {
+			History.newItem("login");
+		}
+		else {
+			History.fireCurrentHistoryState();
+		}
 
-//		LoginView loginView = new LoginPage();
-//		LoginPresenter loginPresenter = new LoginPresenter(loginView);
-//		
-//		loginPresenter.go(container);
-//		
+		//		LoginView loginView = new LoginPage();
+		//		LoginPresenter loginPresenter = new LoginPresenter(loginView);
+		//		
+		//		loginPresenter.go(container);
+		//		
 	}
 
 	@Override
 	public void bind() {
-	    History.addValueChangeHandler(this);
-	    
-	    eventBus.addHandler(NavigateToRegisterNewUserPageEvent.TYPE,
-	            new NavigateToRegisterNewUserPageEventHandler() {
-	              public void onRegisterNewUser(NavigateToRegisterNewUserPageEvent event) {
-//	                doEditContact(event.getId());
-	        	      History.newItem("registration");		
-	              }
-	            });  
+		History.addValueChangeHandler(this);
+
+		eventBus.addHandler(NavigateToLoginPageEvent.TYPE,
+				new NavigateToLoginPageEventHandler() {
+			@Override
+			public void onDisplayLoginPage(NavigateToLoginPageEvent event) {
+				History.newItem("login");							
+			}
+		});  
+
+		eventBus.addHandler(NavigateToRegisterNewUserPageEvent.TYPE,
+				new NavigateToRegisterNewUserPageEventHandler() {
+			public void onRegisterNewUser(NavigateToRegisterNewUserPageEvent event) {
+				//	                doEditContact(event.getId());
+				History.newItem("registration");		
+			}
+		});  
 
 
-	    eventBus.addHandler(NavigateToShoppingPageEvent.TYPE,
-	            new NavigateToShoppingPageEventHandler() {
-	              public void onDisplayShoppingPage(NavigateToShoppingPageEvent event) {
-//	                doEditContact(event.getId());
-	        	      History.newItem("shopping");		
-	              }
-	            });  
+		eventBus.addHandler(NavigateToShoppingPageEvent.TYPE,
+				new NavigateToShoppingPageEventHandler() {
+			public void onDisplayShoppingPage(NavigateToShoppingPageEvent event) {
+				//	                doEditContact(event.getId());
+				History.newItem("shopping");		
+			}
+		});  
 
 	}
 
-//	@Override
-//	public void onRegisterNewUser(RegisterNewUserEvent event) {
-//	      History.newItem("registration");		
-//	} 
+	//	@Override
+	//	public void onRegisterNewUser(RegisterNewUserEvent event) {
+	//	      History.newItem("registration");		
+	//	} 
 }

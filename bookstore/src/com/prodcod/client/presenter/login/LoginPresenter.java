@@ -11,6 +11,7 @@ import com.prodcod.client.presenter.PagePresenter;
 import com.prodcod.client.service.LoginService;
 import com.prodcod.client.service.LoginServiceAsync;
 import com.prodcod.client.event.NavigateToRegisterNewUserPageEvent;
+import com.prodcod.client.event.NavigateToShoppingPageEvent;
 import com.prodcod.shared.User;
 
 public class LoginPresenter implements PagePresenter{
@@ -69,7 +70,9 @@ public class LoginPresenter implements PagePresenter{
 					loginPage.setValidationMessage("Please provide valid authentication credentials");
 				}
 				else {
-					loginPage.setValidationMessage("Welcome: " + result.getForename());					
+//					loginPage.setValidationMessage("Welcome: " + result.getForename());		
+					eventBus.fireEvent(new NavigateToShoppingPageEvent());
+
 				}
 			}
 			
