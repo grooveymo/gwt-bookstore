@@ -6,9 +6,9 @@
 	<g:HTMLPanel>
 	
 	<div id='loginBody'>
-		<div id='validationPanel'>
+		<g:HTMLPanel tag='div' ui:field='validationPanel'>
 			<g:Label ui:field="validationMessage" />
-		</div>
+		</g:HTMLPanel> 
 		
 		<div id='loginPanel'>
 			<div id='usernamePanel'>

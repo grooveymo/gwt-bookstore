@@ -15,6 +15,21 @@
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/bookstore/greet</url-pattern>
   </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>loginServlet</servlet-name>
+    <servlet-class>com.prodcod.server.LoginServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>loginServlet</servlet-name>
+    <url-pattern>/bookstore/login</url-pattern>
+  </servlet-mapping>
+
+
+
+
   
   <!-- Default page to serve -->
   <welcome-file-list>

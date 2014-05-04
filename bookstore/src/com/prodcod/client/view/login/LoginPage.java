@@ -9,11 +9,11 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import com.prodcod.client.presenter.PagePresenter;
 import com.prodcod.client.presenter.login.LoginPresenter;
 
 public class LoginPage extends Composite implements LoginPresenter.LoginView{
@@ -24,6 +24,9 @@ public class LoginPage extends Composite implements LoginPresenter.LoginView{
 	interface LoginPageUiBinder extends UiBinder<Widget, LoginPage> {
 	}
 
+	@UiField 
+	HTMLPanel validationPanel;
+	
 	@UiField
 	Label validationMessage;
 
@@ -46,6 +49,9 @@ public class LoginPage extends Composite implements LoginPresenter.LoginView{
 		userName.addStyleName("fieldInput");
 		password.addStyleName("fieldInput");
 		registrationLink.addStyleName("registrationPanel");
+		validationPanel.getElement().setId("validationPanel");
+		validationPanel.addStyleName("hidden");
+
 	}
 
 	@Override
@@ -66,6 +72,7 @@ public class LoginPage extends Composite implements LoginPresenter.LoginView{
 	@Override
 	public void setValidationMessage(final String message) {
 		validationMessage.setText(message);
+		validationPanel.removeStyleName("hidden");
 	}
 
 	@Override
@@ -79,12 +86,13 @@ public class LoginPage extends Composite implements LoginPresenter.LoginView{
 	
 	@UiHandler("registrationLink")
 	public void onClickRegistration(ClickEvent e) {
-//		RegistrationView registrationView = new RegistrationPage();
-//		RegistrationPresenter registrationPresenter = new RegistrationPresenter(registrationView);
-//		
-//		registrationPresenter.go(RootPanel.get());
 		presenter.navigateToRegistrationPage();
 
 	}
 
+	@UiHandler("submitButton")
+	public void onClickSubmit(ClickEvent e) {
+		presenter.login(userName.getValue(), password.getValue());
+		
+	}
 }
