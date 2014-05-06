@@ -7,4 +7,6 @@ public interface LoginServiceAsync {
 
 	void login(String name, String password, AsyncCallback<User> callback);
 
+	void registerNewCustomer(User customer, AsyncCallback<Void> callback);
+
 }

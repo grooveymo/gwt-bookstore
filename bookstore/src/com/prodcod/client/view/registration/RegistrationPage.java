@@ -1,21 +1,25 @@
 package com.prodcod.client.view.registration;
 
+import java.util.List;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.prodcod.client.presenter.registration.RegistrationPresenter;
 import com.prodcod.client.presenter.registration.RegistrationPresenter.RegistrationView;
+import com.prodcod.shared.BillingAddress;
+import com.prodcod.shared.ShippingAddress;
+import com.prodcod.shared.User;
 
 public class RegistrationPage extends Composite implements RegistrationView {
 
@@ -27,7 +31,7 @@ public class RegistrationPage extends Composite implements RegistrationView {
 	}
 
 	@UiField
-	Label validationMessage;
+	HTMLPanel validationMessage;
 
 	@UiField
 	TextBox forename;
@@ -49,9 +53,6 @@ public class RegistrationPage extends Composite implements RegistrationView {
 
 	@UiField
 	TextBox email;
-
-	@UiField
-	TextBox username;
 	
 	@UiField
 	TextBox password;
@@ -59,9 +60,6 @@ public class RegistrationPage extends Composite implements RegistrationView {
 	@UiField
 	TextBox confirmPassword;
 	
-	@UiField
-	Anchor shoppingLink;
-
 	@UiField
 	Button submitButton;
 
@@ -77,13 +75,8 @@ public class RegistrationPage extends Composite implements RegistrationView {
 	}
 
 	@UiHandler("submitButton")
-	void onClick(ClickEvent e) {
-		Window.alert("Hello!");
-	}
-
-	@UiHandler("shoppingLink")
-	void onClickShopping(ClickEvent e) {
-		presenter.navigateToShoppingPage();
+	void onClickSubmitButton(ClickEvent e) {
+		presenter.registerNewCustomer();
 	}
 
 	@Override
@@ -127,11 +120,6 @@ public class RegistrationPage extends Composite implements RegistrationView {
 	}
 
 	@Override
-	public HasText getUsername() {
-		return username;
-	}
-
-	@Override
 	public HasText getPassword() {
 		return password;
 	}
@@ -142,14 +130,33 @@ public class RegistrationPage extends Composite implements RegistrationView {
 	}
 
 	@Override
-	public void setValidationMessage(String message) {
-		validationMessage.setText(message);
+	public void setValidationMessages(List<String> messages) {
+		
+		validationMessage.clear();
+		for (String mess : messages) {
+            validationMessage.add(new Label(mess));
+		}
 	}
 
 
 	@Override
 	public void setPresenter(RegistrationPresenter presenter) {
 		this.presenter = presenter;
+	}
+
+
+	@Override
+	public User getNewCustomer() {
+		
+		final ShippingAddress shippingAddress = new ShippingAddress(firstLineAddress.getValue(), city.getValue(), postalCode.getValue());
+		final BillingAddress billingAddress = new BillingAddress(firstLineAddress.getValue(), city.getValue(), postalCode.getValue());
+		
+		final User newCustomer = new User(forename.getValue(), surname.getValue(), email.getValue(), password.getValue(), phone.getValue());
+		newCustomer.setBillingAddress(billingAddress);
+		newCustomer.setShippingAddress(shippingAddress);
+		
+		return newCustomer;
+		
 	}
 
 }

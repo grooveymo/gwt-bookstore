@@ -2,6 +2,12 @@ package com.prodcod.shared;
 
 import java.io.Serializable;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * 
  * DTO representing customer
@@ -14,15 +20,27 @@ public class User implements Serializable {
 
 	private int userId;
 	
+	@Size(min = 4, message = "forename must be at least 4 characters long.")
 	private String forename;
+
+	@Size(min = 4, message = "surname must be at least 4 characters long.")
 	private String lastname;
+	
+//	Only works server side - @Email(message = "You must supply an email")		
+	@Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.(?:[a-zA-Z]{2,6})$", message = "You must supply a valid email")
 	private String email;
 	private String mobileNumber;
+	
+	@NotEmpty(message = "You must supply a password")	
 	private String password;
 	
+	@Valid
+	private ShippingAddress shippingAddress;
+
+	@Valid
+	private BillingAddress billingAddress;
 	
-	public User(final int userId, final String forename, final String lastname, final String email, final String password, final String mobileNumber) {
-		this.userId = userId;
+	public User(final String forename, final String lastname, final String email, final String password, final String mobileNumber) {
 		this.forename = forename;
 		this.lastname = lastname;
 		this.email = email;
@@ -41,6 +59,9 @@ public class User implements Serializable {
 		return userId;
 	}
 
+	public void setUserId(int i) {
+		this.userId = i;
+	}
 
 	public String getForename() {
 		return forename;
@@ -71,5 +92,21 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	
+	public ShippingAddress getShippingAddress() {
+		return shippingAddress;
+	}
+
+	public void setShippingAddress(ShippingAddress shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+
+	public BillingAddress getBillingAddress() {
+		return billingAddress;
+	}
+
+	public void setBillingAddress(BillingAddress billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+
 	
 }

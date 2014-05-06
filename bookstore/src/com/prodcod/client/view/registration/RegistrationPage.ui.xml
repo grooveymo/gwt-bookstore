@@ -10,7 +10,7 @@
 		<div id='registrationBody'>
 		
 		<div id='validationPanel'>
-			<g:Label ui:field="validationMessage" />
+			<g:HTMLPanel ui:field="validationMessage" /> 
 		</div>
 		
 		<div id='userDetails'>
@@ -45,10 +45,6 @@
 		</div>
 
 		<div id='accountDetails'>
-			<div id='usernamePanel'>
-				<g:Label>Username: </g:Label>				
-				<g:TextBox ui:field="username" />							
-			</div>		
 			<div id='passwordPanel'>
 				<g:Label>Password: </g:Label>				
 				<g:TextBox ui:field="password" />
@@ -62,11 +58,7 @@
 	<p class='textbox'>
 		This is a test message. See ref: http://scratch99.com/wordpress/hacks/wordpress-simple-css-text-boxes-in-posts/
 	</p>				
-	
-		<div id='shopping'>
-			<g:Anchor ui:field="shoppingLink">shopping</g:Anchor>
-		</div>
-	
+		
 		<div id='submitPanel'>
 			<g:Button ui:field='submitButton'>submit</g:Button>
 		</div>

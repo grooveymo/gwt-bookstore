@@ -11,5 +11,7 @@ import com.prodcod.shared.User;
 @RemoteServiceRelativePath("login")
 public interface LoginService extends RemoteService {
 	User login(String name, String password) throws IllegalArgumentException;
+	
+	void registerNewCustomer(User customer);
 }
 
