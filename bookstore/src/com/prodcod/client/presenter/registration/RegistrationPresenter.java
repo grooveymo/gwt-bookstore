@@ -1,7 +1,9 @@
 package com.prodcod.client.presenter.registration;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -105,8 +107,16 @@ public class RegistrationPresenter implements PagePresenter{
 			
 		}
 		else {
+			//dedupe address violations
+			final Map<String, ConstraintViolation<User>> dedupedViolations = new HashMap<String, ConstraintViolation<User>>();
+			
+			for (ConstraintViolation<User> v : violations) {
+				if(dedupedViolations.get(v.getMessage()) == null) {
+					dedupedViolations.put(v.getMessage(), v);
+				}
+			}
 			//show validation messages
-			displayValidationMessages(violations);
+			displayValidationMessages(dedupedViolations);
 		}
 	}
 	
@@ -122,14 +132,14 @@ public class RegistrationPresenter implements PagePresenter{
 	}
 	
 	/**
-	 * Displays Validation Errors if any exist
-	 * @param violations Set of validation failures
+	 * Displays Validation Errors if any exist.
+	 * @param violations Map of validation failures
 	 */
-	private void displayValidationMessages(Set<ConstraintViolation<User>> violations) {
+	private void displayValidationMessages(Map<String, ConstraintViolation<User>> violations) {
 		final List<String> messages = new ArrayList<String>();
 		
-		for(ConstraintViolation<User> violation : violations) {
-			messages.add(violation.getMessage());
+		for(String message : violations.keySet()) {
+			messages.add(message);
 		}
 		
 		registrationPage.setValidationMessages(messages);
