@@ -3,11 +3,13 @@ package com.prodcod.client.view.registration;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -150,7 +152,7 @@ public class RegistrationPage extends Composite implements RegistrationView {
 		
 		final ShippingAddress shippingAddress = new ShippingAddress(firstLineAddress.getValue(), city.getValue(), postalCode.getValue());
 		final BillingAddress billingAddress = new BillingAddress(firstLineAddress.getValue(), city.getValue(), postalCode.getValue());
-		
+				
 		final User newCustomer = new User(forename.getValue(), surname.getValue(), email.getValue(), password.getValue(), confirmPassword.getValue(), phone.getValue());
 		newCustomer.setBillingAddress(billingAddress);
 		newCustomer.setShippingAddress(shippingAddress);
@@ -158,5 +160,36 @@ public class RegistrationPage extends Composite implements RegistrationView {
 		return newCustomer;
 		
 	}
+	
+	@UiHandler(value = {"forename", "surname", "firstLineAddress", "city", "postalCode", "phone", "email"})
+	void onBlur(BlurEvent e) {
+
+		String field = null;
+		if(e.getSource() == forename) {
+			field = "forename";
+		}
+		else if(e.getSource() == surname) {
+			field = "lastname";
+		}
+		else if(e.getSource() == firstLineAddress) {
+			field = "shippingAddress.firstLineOfAddress";
+		}
+		else if(e.getSource() == city) {
+			field = "shippingAddress.city";
+		}
+		else if(e.getSource() == postalCode) {
+			field = "shippingAddress.postCode";
+		}
+		else if(e.getSource() == phone) {
+			field = "mobileNumber";
+		}
+		else if(e.getSource() == email) {
+			field = "email";
+		}
+		
+		presenter.validateField(field);
+
+	}
+
 
 }

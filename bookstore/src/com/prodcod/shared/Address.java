@@ -2,6 +2,8 @@ package com.prodcod.shared;
 
 import java.io.Serializable;
 
+import javax.validation.groups.Default;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -16,7 +18,7 @@ public class Address implements Serializable{
 	@NotEmpty(message = "You must supply the first line of the address")	
 	private String firstLineOfAddress;
 	
-	@NotEmpty(message = "You must supply the city")	
+	@NotEmpty(message = "You must supply the city", groups=Default.class)	
 	private String city;
 	
 	@NotEmpty(message = "You must supply the Post code")	

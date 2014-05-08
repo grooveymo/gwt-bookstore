@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+import javax.validation.groups.Default;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -125,6 +126,7 @@ public class RegistrationPresenter implements PagePresenter{
 		}
 	}
 	
+	
 	private  Map<String, ConstraintViolation<User>>  convertToMap(Set<ConstraintViolation<User>> violations) {
 
 		final Map<String, ConstraintViolation<User>> dedupedViolations = new HashMap<String, ConstraintViolation<User>>();
@@ -159,6 +161,31 @@ public class RegistrationPresenter implements PagePresenter{
 		}
 		
 		registrationPage.setValidationMessages(messages);
+	}
+	
+	/**
+	 * Performs validation for a field only.
+	 * TODO: only works for fields of User class and not nest properties,
+	 * i.e. properties of Address subclasses. Should be possible
+	 * see: http://stackoverflow.com/questions/10528504/hibernate-validator-validate-nested-property
+	 * 
+	 * @param field
+	 */
+	public void validateField(final String field){
+
+		if(field != null) {
+
+			final User user = registrationPage.getNewCustomer();
+			
+			Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+
+			final Set<ConstraintViolation<User>> violations = validator.validateProperty(user, field, Default.class);
+
+			Map<String, ConstraintViolation<User>> dedupedViolations = convertToMap(violations);
+			
+			displayValidationMessages(dedupedViolations);
+			
+		}
 	}
 	
 }
