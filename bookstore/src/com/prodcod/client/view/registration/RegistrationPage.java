@@ -151,7 +151,7 @@ public class RegistrationPage extends Composite implements RegistrationView {
 		final ShippingAddress shippingAddress = new ShippingAddress(firstLineAddress.getValue(), city.getValue(), postalCode.getValue());
 		final BillingAddress billingAddress = new BillingAddress(firstLineAddress.getValue(), city.getValue(), postalCode.getValue());
 		
-		final User newCustomer = new User(forename.getValue(), surname.getValue(), email.getValue(), password.getValue(), phone.getValue());
+		final User newCustomer = new User(forename.getValue(), surname.getValue(), email.getValue(), password.getValue(), confirmPassword.getValue(), phone.getValue());
 		newCustomer.setBillingAddress(billingAddress);
 		newCustomer.setShippingAddress(shippingAddress);
 		

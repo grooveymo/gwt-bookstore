@@ -33,14 +33,14 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 	static {
 		BillingAddress billingAddress1 = new BillingAddress("1 springfield terrage", "Springfield", "CV1 5RP");
 		ShippingAddress shippingAddress1 = new ShippingAddress("1 springfield terrage", "Springfield", "CV1 5RP");		
-		User user1 = new User("Homer","Simpson","simpson@springfield.com","marge", "012345678");
+		User user1 = new User("Homer","Simpson","simpson@springfield.com","marge", "marge","012345678");
 		user1.setBillingAddress(billingAddress1);
 		user1.setShippingAddress(shippingAddress1);
 		user1.setUserId(++counter);
 		
 		BillingAddress billingAddress2 = new BillingAddress("32 forshore avenue", "Springfield", "CV3 5QS");
 		ShippingAddress shippingAddress2 = new ShippingAddress("32 forshore avenue", "Springfield", "CV3 5QS");		
-		User user2 = new User("Ned","Flander","flanders@springfield.com","lefthand", "111222333");
+		User user2 = new User("Ned","Flander","flanders@springfield.com","lefthand","lefthand", "111222333");
 		user2.setBillingAddress(billingAddress2);
 		user2.setShippingAddress(shippingAddress2);
 		user1.setUserId(++counter);

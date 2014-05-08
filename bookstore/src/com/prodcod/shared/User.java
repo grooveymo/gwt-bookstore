@@ -14,6 +14,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author BruceWayne
  *
  */
+@PasswordValidatorAnnotation
 public class User implements Serializable {
 
 	private static final long serialVersionUID = -4662456929999251486L;
@@ -44,18 +45,22 @@ public class User implements Serializable {
 	
 	@NotEmpty(message = "You must supply a password")	
 	private String password;
-	
+
+	//@NotEmpty(message = "You must confirm the  password")	
+	private String confirmPassword;
+
 	@Valid
 	private ShippingAddress shippingAddress;
 
 	@Valid
 	private BillingAddress billingAddress;
 	
-	public User(final String forename, final String lastname, final String email, final String password, final String mobileNumber) {
+	public User(final String forename, final String lastname, final String email, final String password, final String confirmPassword, final String mobileNumber) {
 		this.forename = forename;
 		this.lastname = lastname;
 		this.email = email;
 		this.password = password;
+		this.confirmPassword = confirmPassword;
 		this.mobileNumber = mobileNumber;
 	}
 	
@@ -117,6 +122,14 @@ public class User implements Serializable {
 
 	public void setBillingAddress(BillingAddress billingAddress) {
 		this.billingAddress = billingAddress;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 	
