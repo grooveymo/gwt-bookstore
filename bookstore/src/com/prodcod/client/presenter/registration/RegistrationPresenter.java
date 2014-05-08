@@ -91,12 +91,22 @@ public class RegistrationPresenter implements PagePresenter{
 				
 		if(violations.isEmpty()) {
 			//Having pass validation - create new Customer
-			loginService.registerNewCustomer(newCustomer, new AsyncCallback<Void>() {
+			loginService.registerNewCustomer(newCustomer, new AsyncCallback<Set<ConstraintViolation<User>>>() {
 				
 				@Override
-				public void onSuccess(Void result) {
+				public void onSuccess(Set<ConstraintViolation<User>> serverViolations) {
+					
 					//Having successfully created new user account - navigate to login page
-					eventBus.fireEvent(new NavigateToLoginPageEvent());
+					if(serverViolations.isEmpty()) {
+						eventBus.fireEvent(new NavigateToLoginPageEvent());						
+					}
+					//Otherwise display server side validation failures
+					else {
+						//dedupe address violations and store result in map
+						final Map<String, ConstraintViolation<User>> dedupedServerViolations = convertToMap(serverViolations);
+
+						displayValidationMessages(dedupedServerViolations);						
+					}
 				}
 				
 				@Override
@@ -107,19 +117,25 @@ public class RegistrationPresenter implements PagePresenter{
 			
 		}
 		else {
-			//dedupe address violations
-			final Map<String, ConstraintViolation<User>> dedupedViolations = new HashMap<String, ConstraintViolation<User>>();
+			//dedupe address violations and store result in map
+			final Map<String, ConstraintViolation<User>> dedupedViolations = convertToMap(violations);
 			
-			for (ConstraintViolation<User> v : violations) {
-				if(dedupedViolations.get(v.getMessage()) == null) {
-					dedupedViolations.put(v.getMessage(), v);
-				}
-			}
 			//show validation messages
 			displayValidationMessages(dedupedViolations);
 		}
 	}
 	
+	private  Map<String, ConstraintViolation<User>>  convertToMap(Set<ConstraintViolation<User>> violations) {
+
+		final Map<String, ConstraintViolation<User>> dedupedViolations = new HashMap<String, ConstraintViolation<User>>();
+		
+		for (ConstraintViolation<User> v : violations) {
+			if(dedupedViolations.get(v.getMessage()) == null) {
+				dedupedViolations.put(v.getMessage(), v);
+			}
+		}
+		return dedupedViolations;
+	}
 	/**
 	 * Perform client side validation
 	 * @param newCustomer User details

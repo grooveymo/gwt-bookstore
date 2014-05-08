@@ -29,6 +29,17 @@ public class User implements Serializable {
 //	Only works server side - @Email(message = "You must supply an email")		
 	@Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.(?:[a-zA-Z]{2,6})$", message = "You must supply a valid email")
 	private String email;
+	
+
+	//TODO: add validator for mobile phone number 
+	/*
+	 * based on http://en.wikipedia.org/wiki/List_of_mobile_phone_number_series_by_country#United_Kingdom, mobile phone prefixes in uk are
+	 * 
+	 * 	071, 074, 075, 077, 078, 079
+	 * 
+	 * Need to write a custom validator that will check the number supplied conforms to this format.
+	 */
+	@NotEmpty(groups = ServersideGroup.class, message = "Mobile number cannot be empty")
 	private String mobileNumber;
 	
 	@NotEmpty(message = "You must supply a password")	

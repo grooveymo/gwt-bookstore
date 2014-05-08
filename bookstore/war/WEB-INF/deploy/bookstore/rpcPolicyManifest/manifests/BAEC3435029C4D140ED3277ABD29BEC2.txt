@@ -1,0 +1,2 @@
+serviceClass: com.prodcod.client.service.LoginService
+path: CF578F45A124031C520F05F0AC4AB7FA.gwt.rpc

@@ -4,10 +4,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+
+//TODO blog about the following class - it gives errors. Enusre that we use javax.validation.Validation
+//import com.google.gwt.validation.client.impl.Validation;
+
+import javax.validation.Validation;
+import javax.validation.Validator;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.prodcod.client.service.LoginService;
 import com.prodcod.shared.BillingAddress;
+import com.prodcod.shared.ExposePathImpl;
+import com.prodcod.shared.ServersideGroup;
 import com.prodcod.shared.ShippingAddress;
 import com.prodcod.shared.User;
 
@@ -65,12 +76,37 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 	}
 
 	@Override
-	public void registerNewCustomer(User customer) {
-
-		synchronized(userList) {
-			userList.add(customer);
-		}
+	public Set<ConstraintViolation<User>> registerNewCustomer(final User customer) {
 		
+		Set<ConstraintViolation<User>> violations = validateServerSide(customer);
+
+		//only add user if successfully validated
+		if(violations.isEmpty()) {
+
+			synchronized(userList) {
+				userList.add(customer);
+			}			
+		}
+
+		return violations;
+
+	}
+
+	/**
+	 * Perform client side validation
+	 * @param newCustomer User details
+	 * @return Set of validation failures
+	 */
+	private Set<ConstraintViolation<User>> validateServerSide(final User newCustomer) {
+		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+		final Set<ConstraintViolation<User>> violations = validator.validate(newCustomer, ServersideGroup.class);
+		return violations;
+	}
+
+	@Override
+	public ExposePathImpl dummyMethod() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

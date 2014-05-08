@@ -1,7 +1,12 @@
 package com.prodcod.client.service;
 
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.prodcod.shared.ExposePathImpl;
 import com.prodcod.shared.User;
 
 /**
@@ -12,6 +17,8 @@ import com.prodcod.shared.User;
 public interface LoginService extends RemoteService {
 	User login(String name, String password) throws IllegalArgumentException;
 	
-	void registerNewCustomer(User customer);
+	Set<ConstraintViolation<User>> registerNewCustomer(User customer);
+	
+	ExposePathImpl dummyMethod();
 }
 
