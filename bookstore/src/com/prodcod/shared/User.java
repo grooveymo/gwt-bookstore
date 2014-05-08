@@ -40,7 +40,8 @@ public class User implements Serializable {
 	 * 
 	 * Need to write a custom validator that will check the number supplied conforms to this format.
 	 */
-	@NotEmpty(groups = ServersideGroup.class, message = "Mobile number cannot be empty")
+//	@NotEmpty(groups = ServersideGroup.class, message = "Mobile number cannot be empty")
+	@UKMobilePhone(groups = ServersideGroup.class)
 	private String mobileNumber;
 	
 	@NotEmpty(message = "You must supply a password")	
