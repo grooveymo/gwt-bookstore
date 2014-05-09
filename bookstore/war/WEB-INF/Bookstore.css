@@ -78,14 +78,26 @@ a .registrationPanel {
 	float: right;
 }
 
-/*
-#registrationPanel a {
-	text-decorate : 1px solid red;
-}
-*/
-
 #submitPanel {
 	clear: both;
 	padding:10px;
+}
+
+#itemsPanel {
+   margin-left : auto;
+   margin-right : auto;
+   width : 800px;
+   height: 600px;
+   border: 10px solid red;
+}
+
+
+#tablePanel {
+   margin-left : auto;
+   margin-right : auto;
+   width : 600px;
+   height: 500px;
+   border: 10px solid red;
+   padding : 20px;   
 }
 

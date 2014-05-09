@@ -7,7 +7,9 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-	<H1>A collection of items</H1>
-		<g:HTMLPanel tag ='div' ui:field='itemsPanel'></g:HTMLPanel>
+	<H1 id = 'pageTitle'>A collection of items</H1>
+		<g:HTMLPanel tag ='div' ui:field='itemsPanel'>
+			<g:ResizeLayoutPanel ui:field="tablePanel" />
+		</g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
