@@ -6,7 +6,7 @@ import javax.validation.ConstraintViolation;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.prodcod.shared.ExposePathImpl;
-import com.prodcod.shared.User;
+import com.prodcod.shared.domain.User;
 
 public interface LoginServiceAsync {
 

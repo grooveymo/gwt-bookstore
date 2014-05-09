@@ -1,4 +1,4 @@
-package com.prodcod.shared;
+package com.prodcod.shared.domain;
 
 import java.io.Serializable;
 

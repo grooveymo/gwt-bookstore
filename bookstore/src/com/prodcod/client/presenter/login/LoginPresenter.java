@@ -7,12 +7,12 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.prodcod.client.event.NavigateToRegisterNewUserPageEvent;
+import com.prodcod.client.event.NavigateToShoppingPageEvent;
 import com.prodcod.client.presenter.PagePresenter;
 import com.prodcod.client.service.LoginService;
 import com.prodcod.client.service.LoginServiceAsync;
-import com.prodcod.client.event.NavigateToRegisterNewUserPageEvent;
-import com.prodcod.client.event.NavigateToShoppingPageEvent;
-import com.prodcod.shared.User;
+import com.prodcod.shared.domain.User;
 
 public class LoginPresenter implements PagePresenter{
 

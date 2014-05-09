@@ -7,9 +7,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.validation.client.AbstractGwtValidatorFactory;
 import com.google.gwt.validation.client.GwtValidation;
 import com.google.gwt.validation.client.impl.AbstractGwtValidator;
-import com.prodcod.shared.Address;
 import com.prodcod.shared.ServersideGroup;
-import com.prodcod.shared.User;
+import com.prodcod.shared.domain.Address;
+import com.prodcod.shared.domain.User;
 
 public final class BookstoreValidatorFactory extends AbstractGwtValidatorFactory {
 

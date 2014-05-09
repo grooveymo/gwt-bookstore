@@ -7,20 +7,18 @@ import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
-
-//TODO blog about the following class - it gives errors. Enusre that we use javax.validation.Validation
-//import com.google.gwt.validation.client.impl.Validation;
-
-import javax.validation.Validation;
 import javax.validation.Validator;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.prodcod.client.service.LoginService;
-import com.prodcod.shared.BillingAddress;
 import com.prodcod.shared.ExposePathImpl;
 import com.prodcod.shared.ServersideGroup;
-import com.prodcod.shared.ShippingAddress;
-import com.prodcod.shared.User;
+import com.prodcod.shared.domain.BillingAddress;
+import com.prodcod.shared.domain.ShippingAddress;
+import com.prodcod.shared.domain.User;
+//TODO blog about the following class - it gives errors. Enusre that we use javax.validation.Validation
+//import com.google.gwt.validation.client.impl.Validation;
+import javax.validation.Validation;
 
 public class LoginServiceImpl extends RemoteServiceServlet implements LoginService {
 

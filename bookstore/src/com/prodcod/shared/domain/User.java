@@ -1,4 +1,4 @@
-package com.prodcod.shared;
+package com.prodcod.shared.domain;
 
 import java.io.Serializable;
 
@@ -7,6 +7,10 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.prodcod.shared.PasswordValidatorAnnotation;
+import com.prodcod.shared.ServersideGroup;
+import com.prodcod.shared.UKMobilePhone;
 
 /**
  * 

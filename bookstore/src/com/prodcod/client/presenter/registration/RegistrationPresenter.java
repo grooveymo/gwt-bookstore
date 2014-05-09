@@ -22,7 +22,7 @@ import com.prodcod.client.event.NavigateToLoginPageEvent;
 import com.prodcod.client.presenter.PagePresenter;
 import com.prodcod.client.service.LoginService;
 import com.prodcod.client.service.LoginServiceAsync;
-import com.prodcod.shared.User;
+import com.prodcod.shared.domain.User;
 
 public class RegistrationPresenter implements PagePresenter{
 

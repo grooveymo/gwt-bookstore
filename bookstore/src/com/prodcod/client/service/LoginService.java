@@ -7,7 +7,7 @@ import javax.validation.ConstraintViolation;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import com.prodcod.shared.ExposePathImpl;
-import com.prodcod.shared.User;
+import com.prodcod.shared.domain.User;
 
 /**
  * The client side stub for the RPC service.

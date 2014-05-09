@@ -3,6 +3,8 @@ package com.prodcod.shared;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import com.prodcod.shared.domain.User;
+
 public class PasswordsValidator implements ConstraintValidator<PasswordValidatorAnnotation, User> {
 
     @Override

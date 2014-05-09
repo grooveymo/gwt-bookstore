@@ -1,12 +1,6 @@
-package com.prodcod.shared;
+package com.prodcod.shared.domain;
 
 import java.io.Serializable;
-
-import javax.validation.groups.Default;
-
-import org.hibernate.validator.constraints.NotEmpty;
-
-import com.prodcod.shared.Address.AddressType;
 
 /**
  * Class to represent Shipping Address
