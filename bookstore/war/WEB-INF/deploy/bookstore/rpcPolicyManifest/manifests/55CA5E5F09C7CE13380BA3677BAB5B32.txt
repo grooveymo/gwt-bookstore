@@ -1,0 +1,2 @@
+serviceClass: com.prodcod.client.service.BookstoreService
+path: 7F5F8FE66A155781576F887E41EC7CC4.gwt.rpc

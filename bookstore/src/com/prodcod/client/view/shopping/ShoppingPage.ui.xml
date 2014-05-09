@@ -7,7 +7,7 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		Hello,
-		<g:Button styleName="{style.important}" ui:field="button" />
+	<H1>A collection of items</H1>
+		<g:HTMLPanel tag ='div' ui:field='itemsPanel'></g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
