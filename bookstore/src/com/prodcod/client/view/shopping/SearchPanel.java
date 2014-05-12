@@ -3,6 +3,7 @@ package com.prodcod.client.view.shopping;
 
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -31,12 +32,16 @@ public class SearchPanel extends Composite {
 	@UiField
 	RadioButton all, title, authorOrArtist, publisher;
 	
+	@UiField
+	SpanElement resultsCount;
+	
 	private ShoppingPresenter presenter;
 	
 	public SearchPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
 		searchInput.addStyleName("middle");
 		searchButton.addStyleName("right");
+		resultsCount.setId("resultsCountPanel");
 	}
 
 
@@ -66,4 +71,7 @@ public class SearchPanel extends Composite {
 	}
 
 
+	public void updateResultsCount(final String count) {
+		resultsCount.setInnerHTML("Number of results: " + count);
+	}
 }

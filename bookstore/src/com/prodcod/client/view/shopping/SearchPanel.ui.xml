@@ -24,6 +24,10 @@
 			<g:RadioButton ui:field="authorOrArtist" name='RB'  checked='false'>Author/Artist</g:RadioButton>
 			<g:RadioButton ui:field="publisher" name='RB'  checked='false'>Publisher</g:RadioButton>
 		</div>
+		
+		<div id='resultsCountPanel'>
+			<span ui:field="resultsCount"/>
+		</div>
 	</div>		
 	</g:HTMLPanel>
 </ui:UiBinder> 
