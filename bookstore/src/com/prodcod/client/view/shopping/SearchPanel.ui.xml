@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+	
+	<div  id='searchPanel'>
+		<div id='searchTextField'>
+			<span id='searchLabel' class="fieldName, left">Search: </span>				
+				
+			<g:TextBox ui:field="searchInput" />							
+				
+			<g:Button ui:field='searchButton'>Search</g:Button>
+		</div>
+		
+		<div id='radioButtonsPanel'>
+			<g:RadioButton ui:field="all" name='RB' checked='true'>All</g:RadioButton>
+
+			<g:RadioButton ui:field="title" name='RB'  checked='false'>Title</g:RadioButton>
+			<g:RadioButton ui:field="authorOrArtist" name='RB'  checked='false'>Author/Artist</g:RadioButton>
+			<g:RadioButton ui:field="publisher" name='RB'  checked='false'>Publisher</g:RadioButton>
+		</div>
+	</div>		
+	</g:HTMLPanel>
+</ui:UiBinder> 

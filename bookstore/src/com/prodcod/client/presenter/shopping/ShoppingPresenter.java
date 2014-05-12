@@ -13,6 +13,7 @@ import com.prodcod.client.service.BookstoreService;
 import com.prodcod.client.service.BookstoreServiceAsync;
 import com.prodcod.shared.domain.BookStore;
 import com.prodcod.shared.domain.Item;
+import com.sun.tools.javac.jvm.Items;
 
 public class ShoppingPresenter implements PagePresenter{
 
@@ -27,6 +28,9 @@ public class ShoppingPresenter implements PagePresenter{
 		void setPresenter(ShoppingPresenter presenter);
 
 		void displayItems(List<Item> items);
+		
+		void updateDisplay(List<Item> items);
+		
 		Widget asWidget();
 	}
 
@@ -59,6 +63,27 @@ public class ShoppingPresenter implements PagePresenter{
 			@Override
 			public void onSuccess(BookStore bookstore) {
 				shoppingPage.displayItems(bookstore.getItems());
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	}
+	
+	/**
+	 * @param type Type of search. Can have values, 'All', 'title', 'originator', 'publisher'
+	 * @param searchWords The search terms
+	 */
+	public void performSearch(final String type, final String searchTerms) {
+
+		bookstoreService.performSearch(type, searchTerms, new AsyncCallback<List<Item>>() {
+			
+			@Override
+			public void onSuccess(List<Item> items) {
+				shoppingPage.updateDisplay(items);
 			}
 			
 			@Override

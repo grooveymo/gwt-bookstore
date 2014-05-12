@@ -114,7 +114,6 @@ public class BookstoreServiceImpl extends RemoteServiceServlet implements Bookst
 	@Override
 	public BookStore getBookstore() {
 		BookStore bookStore = new BookStore("Nile Store");
-//		bookStore.setItems(itemList);
 		bookStore.setItems(list);
 		return bookStore;
 	}
@@ -172,6 +171,68 @@ public class BookstoreServiceImpl extends RemoteServiceServlet implements Bookst
 			list.add(software);
 		}
 		return list;
+	}
+
+
+	@Override
+	public List<Item> performSearch(String type, String searchTerms) {
+		final List<Item> results = new ArrayList<Item>();
+		
+		for(final Item item : list) {
+			
+			if(isPresent(type, searchTerms, item)){
+				results.add(item);
+			}
+			
+		}
+		
+		return results;
+	}
+	
+	private boolean isBookAuthor(final Item item, final String term) {
+		if(item.getClass() == Book.class) {
+			Book book = (Book)item;
+			if(book.getAuthor().contains(term)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean isMusicArtist(final Item item, final String term) {
+		if(item.getClass() == MusicCD.class) {
+			MusicCD musicCD = (MusicCD)item;
+			if(musicCD.getArtist().contains(term)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean isPresent(final String field, final String term, Item item) {
+		if("all".equals(field)) {
+			
+			final boolean isAuthor = isBookAuthor(item, term);
+			final boolean isArtist = isMusicArtist(item, term);
+			
+			if(isAuthor || isArtist || item.getTitle().contains(term) || item.getPublisher().contains(term)) {
+				return true;
+			}
+		}
+		else if ("originator".equals(field)) {
+			final boolean isAuthor = isBookAuthor(item, term);
+			
+			final boolean isArtist = isMusicArtist(item, term);
+			return (isAuthor || isArtist);
+		}
+		else if ("title".equals(field)) {
+			return item.getTitle().contains(term);
+		}
+		else if ("publisher".equals(field)) {
+			return item.getPublisher().contains(term);
+		}
+		
+		return false;
 	}
 
 }

@@ -33,27 +33,25 @@ public class ShoppingPage extends Composite implements ShoppingView{
           gwtCssDataGridResources.dataGridStyle().ensureInjected();
        };
 
+   	@UiField
+   	HTMLPanel itemsPanel;
+
+
+   	@UiField
+   	ResizeLayoutPanel tablePanel;
+
+   	@UiField
+   	SearchPanel searchPanel;
+
+   	private ShoppingPresenter presenter;
+   	
+
 	public ShoppingPage() {
 		initWidget(uiBinder.createAndBindUi(this));
 		itemsPanel.getElement().setId("itemsPanel");
 		tablePanel.getElement().setId("tablePanel");		
 	}
-
-	@UiField
-	HTMLPanel itemsPanel;
-
-
-	@UiField
-	ResizeLayoutPanel tablePanel;
-
-	private ShoppingPresenter presenter;
 	
-	public ShoppingPage(String firstName) {
-		initWidget(uiBinder.createAndBindUi(this));
-		itemsPanel.getElement().setId("itemsPanel");
-		tablePanel.getElement().setId("tablePanel");
-	}
-
 	@Override
 	public void setValidationMessage(String message) {
 		// TODO Auto-generated method stub
@@ -63,12 +61,13 @@ public class ShoppingPage extends Composite implements ShoppingView{
 	@Override
 	public void setPresenter(ShoppingPresenter presenter) {
 		this.presenter = presenter;
+		this.searchPanel.setPresenter(presenter);
 	}
 
 	@Override
 	public void displayItems(List<Item> items) {
 		
-
+		tablePanel.clear();
 		tablePanel.setSize("800px", "600px");
 		tablePanel.add(populateDataGrid(items));
 
@@ -80,6 +79,7 @@ public class ShoppingPage extends Composite implements ShoppingView{
 
 		dataGrid.addColumn(createTitleColumn(), "Title");
 		dataGrid.addColumn(createOriginatorColumn(),"Author/Artist");
+		dataGrid.addColumn(createPublisherColumn(),"Publisher");
 		dataGrid.addColumn(createPriceColumn(),"Price");
 		
 		dataGrid.setRowCount(items.size());
@@ -120,6 +120,18 @@ public class ShoppingPage extends Composite implements ShoppingView{
 		return originator;
 	}
 
+	private TextColumn<Item> createPublisherColumn(){
+		TextColumn<Item> title = new TextColumn<Item>() {
+
+			@Override
+			public String getValue(Item item) {
+				return item.getPublisher();
+			}			
+		};
+		
+		return title;
+	}
+
 	private TextColumn<Item> createPriceColumn(){
 		final NumberFormat frmt = NumberFormat.getFormat(".##");
 		
@@ -132,6 +144,12 @@ public class ShoppingPage extends Composite implements ShoppingView{
 		};
 		
 		return price;
+	}
+
+	@Override
+	public void updateDisplay(List<Item> items) {
+//		populateDataGrid(items);
+		displayItems(items);
 	}
 
 }

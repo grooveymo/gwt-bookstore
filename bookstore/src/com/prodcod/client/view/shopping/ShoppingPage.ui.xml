@@ -1,14 +1,18 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:h="urn:import:com.prodcod.client.view.shopping">
+	
 	<ui:style>
 	.important {
 		font-weight: bold;
 	}
 	</ui:style>
 	<g:HTMLPanel>
-	<H1 id = 'pageTitle'>A collection of items</H1>
-		<g:HTMLPanel tag ='div' ui:field='itemsPanel'>
+	<H1 id = 'pageTitle'>Shop Catalogue</H1>
+		<g:HTMLPanel tag ='div' ui:field='itemsPanel'>			
+			<h:SearchPanel ui:field="searchPanel" />
+		
 			<g:ResizeLayoutPanel ui:field="tablePanel" />
 		</g:HTMLPanel>
 	</g:HTMLPanel>
