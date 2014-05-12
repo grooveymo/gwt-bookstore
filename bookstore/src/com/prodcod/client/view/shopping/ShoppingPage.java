@@ -3,6 +3,7 @@ package com.prodcod.client.view.shopping;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.DataGrid;
@@ -120,11 +121,13 @@ public class ShoppingPage extends Composite implements ShoppingView{
 	}
 
 	private TextColumn<Item> createPriceColumn(){
+		final NumberFormat frmt = NumberFormat.getFormat(".##");
+		
 		TextColumn<Item> price = new TextColumn<Item>() {
 
 			@Override
 			public String getValue(Item item) {
-				return String.valueOf(item.getPrice());
+				return String.valueOf(frmt.format(item.getPrice()));
 			}			
 		};
 		
