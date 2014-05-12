@@ -73,7 +73,6 @@ public class ShoppingPage extends Composite implements ShoppingView{
 	public void displayItems(List<Item> items) {
 		
 		tablePanel.clear();
-		tablePanel.setSize("800px", "600px");
 		tablePanel.add(populateDataGrid(items));
 		
 		searchPanel.updateResultsCount(String.valueOf(items.size()));

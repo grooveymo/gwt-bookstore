@@ -86,27 +86,50 @@ a .registrationPanel {
 #itemsPanel {
    margin-left : auto;
    margin-right : auto;
-   width : 800px;
-   height: 600px;
-/*   border: 10px solid red;*/
+   width : 1000px;
+   height: 1000px;
+   border: 5px solid #cccfff;
+}
+
+#shopPanel {
+	float: left;
+	width : 70%;
+	
+/*   
+   border: 1px solid #cccfff;
+   border: 1px solid red;
+
+*/
+   padding : 20px;   
+   margin-bottom : 20px;
+}
+
+#shoppingCartPanel {
+	float: right;
+	width : 20%;
+	border-left: 2px solid #cccfff;
+	height: inherit;
+   /*
+	border: 5px solid blue;
+   border: 1px solid #cccfff;
+   padding : 20px;   
+   margin-bottom : 20px;
+   */
 }
 
 
 #tablePanel {
    margin-left : auto;
    margin-right : auto;
-   width : 600px;
    height: 500px;
    border-left,border-top, border-right: 1px solid #cccfff;
-   border-bottom: 1px dashed #cccfff;
+   border-bottom: 5px dashed #cccfff;
    padding : 20px;   
 }
 
 #searchPanel {
    margin-left : auto;
    margin-right : auto;
-   width : 800px;
-   
    border: 1px solid #cccfff;
    padding : 20px;   
    margin-bottom : 20px;
@@ -129,8 +152,9 @@ a .registrationPanel {
 
 #radioButtonsPanel {
 
+	/*
    width : 800px;
-   
+   */
    padding :5px;   
    margin-top : 10px;
    margin-left: 80px;
@@ -138,12 +162,15 @@ a .registrationPanel {
 
 #resultsCountPanel {
 
+	/*
    width : 800px;
-   
+   */
    padding :5px;   
    margin-top : 10px;
    margin-left: 40px;
 }
+
+
 
 /**************** following styles from : http://viralpatel.net/blogs/css-radio-button-checkbox-background/ *************/
 /**start **/

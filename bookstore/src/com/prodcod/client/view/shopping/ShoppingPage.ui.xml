@@ -10,10 +10,12 @@
 	</ui:style>
 	<g:HTMLPanel>
 	<H1 id = 'pageTitle'>Shop Catalogue</H1>
-		<g:HTMLPanel tag ='div' ui:field='itemsPanel'>			
-			<h:SearchPanel ui:field="searchPanel" />
-		
-			<g:ResizeLayoutPanel ui:field="tablePanel" />
+		<g:HTMLPanel tag ='div' ui:field='itemsPanel'>
+			<div id='shopPanel'>
+				<h:SearchPanel ui:field="searchPanel" />		
+				<g:ResizeLayoutPanel ui:field="tablePanel" />
+			</div>			
+			<div id='shoppingCartPanel' />
 		</g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
