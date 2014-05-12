@@ -2,22 +2,27 @@ package com.prodcod.client.view.shopping;
 
 import java.util.List;
 
+import com.google.gwt.cell.client.ImageResourceCell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.NumberFormat;
+import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.ResizeLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.prodcod.client.ImageBundle;
 import com.prodcod.client.presenter.shopping.ShoppingPresenter;
 import com.prodcod.client.presenter.shopping.ShoppingPresenter.ShoppingView;
 import com.prodcod.shared.domain.Book;
 import com.prodcod.shared.domain.Item;
 import com.prodcod.shared.domain.MusicCD;
-
+import com.prodcod.shared.domain.Software;
 public class ShoppingPage extends Composite implements ShoppingView{
 
 	private static ShoppingPageUiBinder uiBinder = GWT
@@ -77,6 +82,7 @@ public class ShoppingPage extends Composite implements ShoppingView{
 
 		DataGrid<Item> dataGrid = new DataGrid<Item>(items.size(), gwtCssDataGridResources);
 
+		dataGrid.addColumn(createImageColumn(), "Type");
 		dataGrid.addColumn(createTitleColumn(), "Title");
 		dataGrid.addColumn(createOriginatorColumn(),"Author/Artist");
 		dataGrid.addColumn(createPublisherColumn(),"Publisher");
@@ -146,9 +152,34 @@ public class ShoppingPage extends Composite implements ShoppingView{
 		return price;
 	}
 
+	public Column<Item, ImageResource> createImageColumn() {
+		Column<Item, ImageResource> imageColumn = new Column<Item, ImageResource>(new ImageResourceCell()) {
+		    @Override
+		    public ImageResource getValue(Item item) {
+
+		    	ImageResource resource = null;
+		    	
+		    	if(item.getClass() == Book.class) {
+			        resource = ImageBundle.INSTANCE.bookImage();		    			    		
+		    	}
+		    	else if(item.getClass() == MusicCD.class) {
+			        resource = ImageBundle.INSTANCE.musicImage();		    			    		
+		    	}
+		    	else if(item.getClass() == Software.class) {
+			        resource = ImageBundle.INSTANCE.softwareImage();		    			    		
+		    	}
+		    	
+		    	return resource;
+		    			
+		    }
+		  };
+		  
+		  return imageColumn;
+	}
+	
+	
 	@Override
 	public void updateDisplay(List<Item> items) {
-//		populateDataGrid(items);
 		displayItems(items);
 	}
 

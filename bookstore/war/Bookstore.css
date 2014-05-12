@@ -128,12 +128,16 @@ a .registrationPanel {
 
 
 #radioButtonsPanel {
-   margin-left : auto;
+
+	/*
+	margin-left : auto;
    margin-right : auto;
+   */
    width : 800px;
    
    padding :5px;   
    margin-top : 10px;
+   margin-left: 80px;
 }
 
 /**************** following styles from : http://viralpatel.net/blogs/css-radio-button-checkbox-background/ *************/
