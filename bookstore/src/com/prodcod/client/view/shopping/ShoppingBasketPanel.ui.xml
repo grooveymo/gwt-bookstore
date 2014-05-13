@@ -9,8 +9,16 @@
 	<g:HTMLPanel>
 		<h1>Shopping Basket</h1>
 		<g:ScrollPanel>
-			<g:HTMLPanel ui:field="ShoppingBasketItemsPanel"></g:HTMLPanel>
-		 </g:ScrollPanel>
-		<g:Button styleName="{style.important}" ui:field="checkoutButton" >checkout</g:Button>
+			<g:HTMLPanel ui:field="ShoppingBasketItemsPanel">
+				<g:HTMLPanel tag='div' ui:field='numItemsPanel'>
+
+					<g:Image ui:field='basketImage' />
+
+					<span ui:field="numItems" />
+				</g:HTMLPanel>
+
+			</g:HTMLPanel>
+		</g:ScrollPanel>
+		<g:Button styleName="{style.important}" ui:field="checkoutButton">checkout</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder> 

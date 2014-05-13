@@ -22,5 +22,9 @@ public interface ImageBundle extends ClientBundle{
 	@ImageOptions(height=45, width=95)
 	ImageResource bookImage();
 
+	@Source("shopping-cart.png")
+	@ImageOptions(height=95, width=95)
+	ImageResource cartImage();
+
 }
 

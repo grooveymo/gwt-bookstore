@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -12,7 +14,9 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
+import com.prodcod.client.ImageBundle;
 import com.prodcod.client.presenter.shopping.ShoppingBasketPresenter;
 import com.prodcod.client.presenter.shopping.ShoppingBasketPresenter.ShoppingBasketPanelView;
 import com.prodcod.shared.domain.Book;
@@ -36,12 +40,28 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 	@UiField
 	HTMLPanel ShoppingBasketItemsPanel;
 	
+	@UiField
+	HTMLPanel numItemsPanel;
+
+	@UiField
+	Image basketImage;
+
+	@UiField
+	SpanElement numItems;
+
 	private Map<Item, ShoppingBasketItem> map;
+	
 	
 	public ShoppingBasketPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
 		ShoppingBasketItemsPanel.getElement().setId("shoppingBasketItemsPanel");
 		map = new HashMap<Item, ShoppingBasketItem>();
+		
+		ImageResource img = ImageBundle.INSTANCE.cartImage();
+		basketImage.setUrl(img.getURL());
+		basketImage.getElement().setId("basketImage");
+
+		numItemsPanel.getElement().setId("numItemsPanel");
 	}
 
 
@@ -73,6 +93,8 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 		basketItem.setPresenter(presenter);
 		map.put(item, basketItem);
 		ShoppingBasketItemsPanel.add(basketItem);
+		
+		numItems.setInnerText("Number of Items: " + map.size());
 	}
 
 
@@ -80,6 +102,9 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 	public void removeItemFromBasket(Item item) {
 		final ShoppingBasketItem basketItem = map.get(item);
 		ShoppingBasketItemsPanel.remove(basketItem);
+		map.remove(item);
+		numItems.setInnerText("Number of Items: " + map.size());
+
 	}
 
 

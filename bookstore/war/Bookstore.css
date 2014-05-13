@@ -182,6 +182,14 @@ a .registrationPanel {
 	background-color: #ffffff;
 }
 
+#basketImage {
+	padding: 10px;
+	display:block;
+}
+
+#numItemsPanel.span {
+	padding : 10px;
+}
 /**************** following styles from : http://viralpatel.net/blogs/css-radio-button-checkbox-background/ *************/
 /**start **/
 
