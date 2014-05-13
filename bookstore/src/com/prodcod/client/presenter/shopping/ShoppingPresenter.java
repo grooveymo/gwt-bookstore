@@ -8,6 +8,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.prodcod.client.event.AddToShoppingBasketEvent;
+import com.prodcod.client.event.RemoveFromShoppingBasketEvent;
 import com.prodcod.client.presenter.PagePresenter;
 import com.prodcod.client.service.BookstoreService;
 import com.prodcod.client.service.BookstoreServiceAsync;
@@ -54,6 +55,7 @@ public class ShoppingPresenter implements PagePresenter{
 	@Override
 	public void bind() {
 		eventBus.addHandler(AddToShoppingBasketEvent.TYPE, shoppingPage.getShoppingBasketPresenter());  
+		eventBus.addHandler(RemoveFromShoppingBasketEvent.TYPE, shoppingPage.getShoppingBasketPresenter());  
 	}
 
 
@@ -104,5 +106,20 @@ public class ShoppingPresenter implements PagePresenter{
 		event.setItemToBeAdded(item);
 		eventBus.fireEvent(event);
 	}
+
+	public HandlerManager getEventBus() {
+		return eventBus;
+	}
 	
+//	/**
+//	 * Fires an event to remove item from the  shopping basket
+//	 * This should update the model and views respectively.
+//	 * @param item
+//	 */
+//	public void removeFromBasket(final Item item) {
+//		final RemoveFromShoppingBasketEvent event = new RemoveFromShoppingBasketEvent();
+//		event.setItemToBeRemoved(item);
+//		eventBus.fireEvent(event);
+//	}
+
 }

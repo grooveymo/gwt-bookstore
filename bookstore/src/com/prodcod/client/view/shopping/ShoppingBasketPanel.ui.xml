@@ -11,6 +11,6 @@
 		<g:ScrollPanel>
 			<g:HTMLPanel ui:field="ShoppingBasketItemsPanel"></g:HTMLPanel>
 		 </g:ScrollPanel>
-		<g:Button styleName="{style.important}" ui:field="checkoutButton" />
+		<g:Button styleName="{style.important}" ui:field="checkoutButton" >checkout</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder> 

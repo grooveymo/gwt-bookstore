@@ -89,6 +89,7 @@ a .registrationPanel {
    width : 1000px;
    height: 1000px;
    border: 5px solid #cccfff;
+   background-color: #e5e5e5;
 }
 
 #shopPanel {
@@ -102,6 +103,8 @@ a .registrationPanel {
 */
    padding : 20px;   
    margin-bottom : 20px;
+      background-color: #ccccccc;
+   
 }
 
 #shoppingCartPanel {
@@ -110,6 +113,7 @@ a .registrationPanel {
 	border-left: 2px solid #cccfff;
 	height: inherit;
 	overflow-y : auto;
+	background-color: #b2b2b2;
 }
 
 
@@ -128,6 +132,8 @@ a .registrationPanel {
    border: 1px solid #cccfff;
    padding : 20px;   
    margin-bottom : 20px;
+   background-color: #cccccc;
+   
 }
 
 
@@ -173,6 +179,7 @@ a .registrationPanel {
 .basketItem {
 	padding: 10px;
 	
+	background-color: #ffffff;
 }
 
 /**************** following styles from : http://viralpatel.net/blogs/css-radio-button-checkbox-background/ *************/

@@ -1,5 +1,8 @@
 package com.prodcod.client.view.shopping;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -33,9 +36,12 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 	@UiField
 	HTMLPanel ShoppingBasketItemsPanel;
 	
+	private Map<Item, ShoppingBasketItem> map;
+	
 	public ShoppingBasketPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
 		ShoppingBasketItemsPanel.getElement().setId("shoppingBasketItemsPanel");
+		map = new HashMap<Item, ShoppingBasketItem>();
 	}
 
 
@@ -63,8 +69,17 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 			originator = cd.getArtist();
 		}
 
-		final ShoppingBasketItem basketItem = new ShoppingBasketItem(item.getTitle(),originator, String.valueOf(item.getPrice()));
+		final ShoppingBasketItem basketItem = new ShoppingBasketItem(item.getTitle(),originator, String.valueOf(item.getPrice()), item);
+		basketItem.setPresenter(presenter);
+		map.put(item, basketItem);
 		ShoppingBasketItemsPanel.add(basketItem);
+	}
+
+
+	@Override
+	public void removeItemFromBasket(Item item) {
+		final ShoppingBasketItem basketItem = map.get(item);
+		ShoppingBasketItemsPanel.remove(basketItem);
 	}
 
 

@@ -63,8 +63,6 @@ public class ShoppingPage extends Composite implements ShoppingView{
 		tablePanel.getElement().setId("tablePanel");		
 		shoppingBasketPanel.getElement().setId("shoppingBasketPanel");	
 		
-		shoppingBasketPresenter = new ShoppingBasketPresenter(shoppingBasketPanel);
-//		shoppingBasketPanel.setPresenter(shoppingBasketPresenter);
 		
 	}
 
@@ -78,6 +76,7 @@ public class ShoppingPage extends Composite implements ShoppingView{
 	public void setPresenter(ShoppingPresenter presenter) {
 		this.presenter = presenter;
 		this.searchPanel.setPresenter(presenter);
+		shoppingBasketPresenter = new ShoppingBasketPresenter(shoppingBasketPanel, presenter.getEventBus());
 	}
 
 	@Override
