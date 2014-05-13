@@ -22,4 +22,29 @@ public class MusicCD extends Item{
 	public void setArtist(String artist) {
 		this.artist = artist;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((artist == null) ? 0 : artist.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MusicCD other = (MusicCD) obj;
+		if (artist == null) {
+			if (other.artist != null)
+				return false;
+		} else if (!artist.equals(other.artist))
+			return false;
+		return true;
+	}
 }
