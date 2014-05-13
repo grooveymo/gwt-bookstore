@@ -15,7 +15,9 @@
 				<h:SearchPanel ui:field="searchPanel" />		
 				<g:ResizeLayoutPanel ui:field="tablePanel" />
 			</div>			
-			<div id='shoppingCartPanel' />
+			<div id='shoppingCartPanel' >
+				<h:ShoppingBasketPanel ui:field="shoppingBasketPanel"/>
+			</div>
 		</g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

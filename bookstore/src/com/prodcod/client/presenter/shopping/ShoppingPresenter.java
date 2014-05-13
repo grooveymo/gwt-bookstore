@@ -3,17 +3,16 @@ package com.prodcod.client.presenter.shopping;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.prodcod.client.event.AddToShoppingBasketEvent;
 import com.prodcod.client.presenter.PagePresenter;
 import com.prodcod.client.service.BookstoreService;
 import com.prodcod.client.service.BookstoreServiceAsync;
 import com.prodcod.shared.domain.BookStore;
 import com.prodcod.shared.domain.Item;
-import com.sun.tools.javac.jvm.Items;
 
 public class ShoppingPresenter implements PagePresenter{
 
@@ -30,6 +29,8 @@ public class ShoppingPresenter implements PagePresenter{
 		void displayItems(List<Item> items);
 		
 		void updateDisplay(List<Item> items);
+		
+		ShoppingBasketPresenter getShoppingBasketPresenter();
 		
 		Widget asWidget();
 	}
@@ -52,8 +53,7 @@ public class ShoppingPresenter implements PagePresenter{
 
 	@Override
 	public void bind() {
-		// TODO Auto-generated method stub
-
+		eventBus.addHandler(AddToShoppingBasketEvent.TYPE, shoppingPage.getShoppingBasketPresenter());  
 	}
 
 
@@ -93,4 +93,16 @@ public class ShoppingPresenter implements PagePresenter{
 			}
 		});
 	}
+	
+	/**
+	 * Fires an event to add item to shopping basket
+	 * This should update the model and views respectively.
+	 * @param item
+	 */
+	public void addToBasket(final Item item) {
+		final AddToShoppingBasketEvent event = new AddToShoppingBasketEvent();
+		event.setItemToBeAdded(item);
+		eventBus.fireEvent(event);
+	}
+	
 }
