@@ -11,6 +11,7 @@
 			<span ui:field="titleField" />
 			<span ui:field="originatorField" />
 			<span ui:field="priceField" />
+			<span ui:field="quantityField" />
 		</g:HTMLPanel>
 		<g:HTMLPanel tag='div' ui:field="buttonPanel">
 			<g:Button styleName="{style.important}" ui:field="removeButton" >remove</g:Button>

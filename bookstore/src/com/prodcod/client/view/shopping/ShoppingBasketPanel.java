@@ -22,6 +22,7 @@ import com.prodcod.client.presenter.shopping.ShoppingBasketPresenter.ShoppingBas
 import com.prodcod.shared.domain.Book;
 import com.prodcod.shared.domain.Item;
 import com.prodcod.shared.domain.MusicCD;
+import com.prodcod.shared.domain.OrderItem;
 
 public class ShoppingBasketPanel extends Composite implements ShoppingBasketPanelView  {
 
@@ -49,6 +50,8 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 	@UiField
 	SpanElement numItems;
 
+	private int count;
+
 	private Map<Item, ShoppingBasketItem> map;
 	
 	
@@ -56,6 +59,8 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 		initWidget(uiBinder.createAndBindUi(this));
 		ShoppingBasketItemsPanel.getElement().setId("shoppingBasketItemsPanel");
 		map = new HashMap<Item, ShoppingBasketItem>();
+		
+		count = 0;
 		
 		ImageResource img = ImageBundle.INSTANCE.cartImage();
 		basketImage.setUrl(img.getURL());
@@ -76,9 +81,10 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 	}
 
 	@Override
-	public void addItemToBasket(Item item) {
+	public void addItemToBasket(OrderItem orderItem) {
 
 		String originator = "";
+		final Item item = orderItem.getItem();
 		
 		if(item.getClass() == Book.class) {
 			Book book = (Book)item;
@@ -91,20 +97,36 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 
 		final ShoppingBasketItem basketItem = new ShoppingBasketItem(item.getTitle(),originator, String.valueOf(item.getPrice()), item);
 		basketItem.setPresenter(presenter);
+		
 		map.put(item, basketItem);
 		ShoppingBasketItemsPanel.add(basketItem);
 		
-		numItems.setInnerText("Number of Items: " + map.size());
+		count++;
 	}
 
 
 	@Override
-	public void removeItemFromBasket(Item item) {
+	public void removeItemFromBasket(OrderItem orderItem) {
+		final Item item = orderItem.getItem();
 		final ShoppingBasketItem basketItem = map.get(item);
 		ShoppingBasketItemsPanel.remove(basketItem);
 		map.remove(item);
-		numItems.setInnerText("Number of Items: " + map.size());
+		count--;
+	}
 
+
+	@Override
+	public void updateCount() {
+		numItems.setInnerText("Number of Items: " + count);		
+	}
+
+
+	@Override
+	public void updateItemInBasket(OrderItem orderItem) {
+		
+		final Item item = orderItem.getItem();
+		ShoppingBasketItem shoppingBasketItem = map.get(item);
+		shoppingBasketItem.updateQuantity(orderItem.getCount());
 	}
 
 

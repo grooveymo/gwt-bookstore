@@ -25,12 +25,13 @@ public class ShoppingBasketItem extends Composite {
 	private static final String TITLE = "title: ";
 	private static final String ARTIST= "artist/author: ";
 	private static final String PRICE = "price: ";
+	private static final String QUANTITY = "quantity: ";
 
 	@UiField
 	Button removeButton;
 
 	@UiField
-	SpanElement titleField, originatorField, priceField;
+	SpanElement titleField, originatorField, priceField, quantityField;
 
 	@UiField 
 	HTMLPanel fieldsPanel;
@@ -54,6 +55,8 @@ public class ShoppingBasketItem extends Composite {
 		originatorField.setInnerHTML(ARTIST + originator);
 		priceField.setInnerHTML(PRICE + price);
 		fieldsPanel.addStyleName("basketItem");
+		quantityField.setInnerHTML(QUANTITY + " 1");
+
 	}
 
 	public void setPresenter (final ShoppingBasketPresenter presenter){ 
@@ -65,4 +68,7 @@ public class ShoppingBasketItem extends Composite {
 		presenter.removeFromBasket(item);
 	}
 
+	void updateQuantity(final int count) {
+		quantityField.setInnerHTML(QUANTITY + String.valueOf(count));
+	}
 }
