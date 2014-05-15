@@ -19,11 +19,13 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 	
 	private final HandlerManager eventBus;
 
+	private int count = 0;
+	
 	public interface ShoppingBasketPanelView {
 		void addItemToBasket(final OrderItem item);
 		void removeItemFromBasket(final OrderItem item);
 		void updateItemInBasket(final OrderItem item);
-		void updateCount();
+		void updateCount(final int count);
 		void setPresenter(ShoppingBasketPresenter presenter);
 	}
 	
@@ -37,6 +39,8 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 	@Override
 	public void onAddToBasket(AddToShoppingBasketEvent event) {
 
+		count++;
+		
 		final Item item = event.getItemToBeAdded();
 
 		OrderItem orderItem = basketItems.get(item);
@@ -47,13 +51,11 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 			view.addItemToBasket(orderItem);		
 		} 
 		else {
+			orderItem.incrementQuantity();
 			view.updateItemInBasket(orderItem);
 		}
-		
-			
-		orderItem.incrementQuantity();
 	
-		view.updateCount();
+		view.updateCount(count);
 
 	}
 
@@ -71,6 +73,9 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 	 * @param item
 	 */
 	public void removeFromBasket(final Item item) {
+		
+		count--;
+		
 		final RemoveFromShoppingBasketEvent event = new RemoveFromShoppingBasketEvent();
 		event.setItemToBeRemoved(item);
 		eventBus.fireEvent(event);
@@ -92,7 +97,7 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 		}
 
 
-		view.updateCount();
+		view.updateCount(count);
 	}
 	
 }

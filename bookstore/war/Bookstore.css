@@ -183,12 +183,17 @@ a .registrationPanel {
 }
 
 #basketImage {
+	margin-left:20px;
 	padding: 10px;
 	display:block;
 }
 
 #numItemsPanel.span {
 	padding : 10px;
+}
+
+#checkoutButton {
+	margin-left : 35px;
 }
 /**************** following styles from : http://viralpatel.net/blogs/css-radio-button-checkbox-background/ *************/
 /**start **/

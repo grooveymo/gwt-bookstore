@@ -12,7 +12,7 @@ public class OrderItem implements Serializable{
 
 	public OrderItem(Item item) {
 		this.item = item;
-		count = 0;
+		count = 1;
 	}
 
 	public Item getItem() {

@@ -1,6 +1,7 @@
 package com.prodcod.client.view.shopping;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
@@ -50,7 +51,7 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 	@UiField
 	SpanElement numItems;
 
-	private int count;
+//	private int count;
 
 	private Map<Item, ShoppingBasketItem> map;
 	
@@ -60,13 +61,14 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 		ShoppingBasketItemsPanel.getElement().setId("shoppingBasketItemsPanel");
 		map = new HashMap<Item, ShoppingBasketItem>();
 		
-		count = 0;
+//		count = 0;
 		
 		ImageResource img = ImageBundle.INSTANCE.cartImage();
 		basketImage.setUrl(img.getURL());
 		basketImage.getElement().setId("basketImage");
 
 		numItemsPanel.getElement().setId("numItemsPanel");
+		checkoutButton.getElement().setId("checkoutButton");
 	}
 
 
@@ -101,7 +103,7 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 		map.put(item, basketItem);
 		ShoppingBasketItemsPanel.add(basketItem);
 		
-		count++;
+//		count++;
 	}
 
 
@@ -111,22 +113,24 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 		final ShoppingBasketItem basketItem = map.get(item);
 		ShoppingBasketItemsPanel.remove(basketItem);
 		map.remove(item);
-		count--;
-	}
-
-
-	@Override
-	public void updateCount() {
-		numItems.setInnerText("Number of Items: " + count);		
+//		count--;
 	}
 
 
 	@Override
 	public void updateItemInBasket(OrderItem orderItem) {
+
+//		count++;
 		
 		final Item item = orderItem.getItem();
 		ShoppingBasketItem shoppingBasketItem = map.get(item);
 		shoppingBasketItem.updateQuantity(orderItem.getCount());
+	}
+
+	@Override
+	public void updateCount(int count) {
+		
+		numItems.setInnerText("Number of Items: " + count);		
 	}
 
 
