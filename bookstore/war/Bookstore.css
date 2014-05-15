@@ -50,9 +50,13 @@ div#loginBody, #registrationBody {
 
 #validationPanel {
 	padding:10px;
-	display : none;
+	background-color : red;
 }
 
+#validationPanel.hidden {
+  	display : none;
+  }
+  
 #loginPanel {
 	padding:5px;
 }
