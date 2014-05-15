@@ -1,11 +1,11 @@
 package com.prodcod.client.presenter.shopping;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.google.gwt.event.shared.HandlerManager;
+import com.prodcod.client.ClientFactoryImpl;
 import com.prodcod.client.event.AddToShoppingBasketEvent;
 import com.prodcod.client.event.AddToShoppingBasketEventHandler;
+import com.prodcod.client.event.NavigateToCheckoutPageEvent;
+import com.prodcod.client.event.NavigateToLoginPageEvent;
 import com.prodcod.client.event.RemoveFromShoppingBasketEvent;
 import com.prodcod.client.event.RemoveFromShoppingBasketEventHandler;
 import com.prodcod.shared.domain.Item;
@@ -14,8 +14,6 @@ import com.prodcod.shared.domain.OrderItem;
 public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler, RemoveFromShoppingBasketEventHandler {
 	
 	private ShoppingBasketPanelView view;
-	
-	private Map<Item, OrderItem> basketItems;
 	
 	private final HandlerManager eventBus;
 
@@ -33,7 +31,6 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 		this.view = view;
 		this.eventBus = eventBus;
 		view.setPresenter(this);
-		basketItems = new HashMap<Item, OrderItem>();
 	}
 
 	@Override
@@ -43,28 +40,19 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 		
 		final Item item = event.getItemToBeAdded();
 
-		OrderItem orderItem = basketItems.get(item);
-		
-		if(orderItem == null) {
-			orderItem = new OrderItem(item);
-			basketItems.put(item, orderItem);
-			view.addItemToBasket(orderItem);		
-		} 
-		else {
-			orderItem.incrementQuantity();
+		//update model
+		final OrderItem orderItem = ClientFactoryImpl.INSTANCE.getShoppingBasketModel().addToBasket(item);
+
+		//update view
+		if(orderItem.getCount() > 1) {
 			view.updateItemInBasket(orderItem);
 		}
+		else {
+			view.addItemToBasket(orderItem);		
+		} 
 	
 		view.updateCount(count);
 
-	}
-
-	public Map<Item, OrderItem> getBasketItems() {
-		return basketItems;
-	}
-
-	public void setBasketItems(Map<Item, OrderItem> items) {
-		this.basketItems = items;
 	}
 
 	/**
@@ -85,19 +73,26 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 	public void onRemoveFromBasket(RemoveFromShoppingBasketEvent event) {
 		final Item item = event.getItemToBeRemoved();
 		
-		OrderItem orderItem = basketItems.get(item);
-		
-		if (orderItem.isLastOne()) {
-			basketItems.remove(item);			
+		//update model
+		final OrderItem orderItem = ClientFactoryImpl.INSTANCE.getShoppingBasketModel().removeFromBasket(item);
+
+		//update view
+		if (orderItem.getCount() == 0) {
 			view.removeItemFromBasket(orderItem);
 		}
 		else {
-			orderItem.decrementQuantity();
 			view.updateItemInBasket(orderItem);
 		}
 
-
 		view.updateCount(count);
+	}
+
+	/**
+	 * User has clicked on 'checkout' button
+	 */
+	public void checkout() {
+		eventBus.fireEvent(new NavigateToCheckoutPageEvent());						
+
 	}
 	
 }

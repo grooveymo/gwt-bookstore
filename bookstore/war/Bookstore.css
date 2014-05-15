@@ -206,6 +206,19 @@ a .registrationPanel {
 #checkoutButton {
 	margin-left : 35px;
 }
+
+#checkoutPanel {
+	margin-left: auto;
+	margin-right:auto;
+	width: 800px
+}
+
+.orderItemContainer {
+	padding: 10px
+	margin-top : 10px;
+	margin-bottom: 10px;
+	border : 2px solid blue;
+}
 /**************** following styles from : http://viralpatel.net/blogs/css-radio-button-checkbox-background/ *************/
 /**start **/
 

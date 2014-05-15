@@ -1,0 +1,24 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel ui:field="checkoutPanel">
+
+		<g:HTMLPanel ui:field='summarySectionPanel' >
+			<g:Label ui:field="numItems" />
+			<g:Label ui:field="totalCost" />
+		</g:HTMLPanel>
+
+		<g:ScrollPanel>
+			<g:HTMLPanel ui:field='orderItemsPanel' />
+		</g:ScrollPanel>
+
+		<g:HTMLPanel ui:field='submitButtonPanel'>
+			<g:Button styleName="{style.important}" ui:field="submitOrderButton" >Submit</g:Button>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

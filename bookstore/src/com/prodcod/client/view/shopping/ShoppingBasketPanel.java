@@ -51,8 +51,6 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 	@UiField
 	SpanElement numItems;
 
-//	private int count;
-
 	private Map<Item, ShoppingBasketItem> map;
 	
 	
@@ -60,8 +58,6 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 		initWidget(uiBinder.createAndBindUi(this));
 		ShoppingBasketItemsPanel.getElement().setId("shoppingBasketItemsPanel");
 		map = new HashMap<Item, ShoppingBasketItem>();
-		
-//		count = 0;
 		
 		ImageResource img = ImageBundle.INSTANCE.cartImage();
 		basketImage.setUrl(img.getURL());
@@ -79,7 +75,7 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 	
 	@UiHandler("checkoutButton")
 	void onClick(ClickEvent e) {
-		Window.alert("Hello!");
+			presenter.checkout();
 	}
 
 	@Override
@@ -87,7 +83,8 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 
 		String originator = "";
 		final Item item = orderItem.getItem();
-		
+
+		//TODO ; refactor to enable reuse following check - also think about using Decorator pattern to relate OrderItem to Item
 		if(item.getClass() == Book.class) {
 			Book book = (Book)item;
 			originator = book.getAuthor();
@@ -103,7 +100,6 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 		map.put(item, basketItem);
 		ShoppingBasketItemsPanel.add(basketItem);
 		
-//		count++;
 	}
 
 
@@ -113,14 +109,11 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 		final ShoppingBasketItem basketItem = map.get(item);
 		ShoppingBasketItemsPanel.remove(basketItem);
 		map.remove(item);
-//		count--;
 	}
 
 
 	@Override
 	public void updateItemInBasket(OrderItem orderItem) {
-
-//		count++;
 		
 		final Item item = orderItem.getItem();
 		ShoppingBasketItem shoppingBasketItem = map.get(item);

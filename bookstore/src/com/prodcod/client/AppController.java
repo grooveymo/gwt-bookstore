@@ -5,6 +5,8 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.prodcod.client.event.NavigateToCheckoutPageEvent;
+import com.prodcod.client.event.NavigateToCheckoutPageEventHandler;
 import com.prodcod.client.event.NavigateToLoginPageEvent;
 import com.prodcod.client.event.NavigateToLoginPageEventHandler;
 import com.prodcod.client.event.NavigateToRegisterNewUserPageEvent;
@@ -14,11 +16,14 @@ import com.prodcod.client.event.NavigateToShoppingPageEventHandler;
 import com.prodcod.client.presenter.PagePresenter;
 import com.prodcod.client.presenter.login.LoginPresenter;
 import com.prodcod.client.presenter.login.LoginPresenter.LoginView;
+import com.prodcod.client.presenter.registration.CheckoutPresenter;
+import com.prodcod.client.presenter.registration.CheckoutPresenter.CheckoutView;
 import com.prodcod.client.presenter.registration.RegistrationPresenter;
 import com.prodcod.client.presenter.registration.RegistrationPresenter.RegistrationView;
 import com.prodcod.client.presenter.shopping.ShoppingPresenter;
 import com.prodcod.client.presenter.shopping.ShoppingPresenter.ShoppingView;
 import com.prodcod.client.view.login.LoginPage;
+import com.prodcod.client.view.order.CheckoutPage;
 import com.prodcod.client.view.registration.RegistrationPage;
 import com.prodcod.client.view.shopping.ShoppingPage;
 
@@ -122,6 +127,10 @@ public class AppController implements PagePresenter, ValueChangeHandler<String> 
 				ShoppingView shoppingView = new ShoppingPage();
 				presenter = new ShoppingPresenter(shoppingView, eventBus);				
 			}
+			else if (token.equals("checkout")) {
+				CheckoutView checkoutView = new CheckoutPage();
+				presenter = new CheckoutPresenter(checkoutView, eventBus);				
+			}
 
 			if (presenter != null) {
 				presenter.go(container);
@@ -144,12 +153,6 @@ public class AppController implements PagePresenter, ValueChangeHandler<String> 
 		else {
 			History.fireCurrentHistoryState();
 		}
-
-		//		LoginView loginView = new LoginPage();
-		//		LoginPresenter loginPresenter = new LoginPresenter(loginView);
-		//		
-		//		loginPresenter.go(container);
-		//		
 	}
 
 	@Override
@@ -178,6 +181,14 @@ public class AppController implements PagePresenter, ValueChangeHandler<String> 
 			public void onDisplayShoppingPage(NavigateToShoppingPageEvent event) {
 				//	                doEditContact(event.getId());
 				History.newItem("shopping");		
+			}
+		});  
+
+		eventBus.addHandler(NavigateToCheckoutPageEvent.TYPE,
+				new NavigateToCheckoutPageEventHandler() {
+			@Override
+			public void onDisplayCheckoutPage(NavigateToCheckoutPageEvent event) {
+				History.newItem("checkout");							
 			}
 		});  
 

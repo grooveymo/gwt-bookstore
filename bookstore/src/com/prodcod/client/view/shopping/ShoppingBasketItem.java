@@ -45,6 +45,7 @@ public class ShoppingBasketItem extends Composite {
 //	}
 
 
+	//TODO ; refactor to remove fields and just use item class. Maybe use OrderItem and not Item class
 	public ShoppingBasketItem(final String title, final String originator, final String price, final Item item) {
 
 		initWidget(uiBinder.createAndBindUi(this));
