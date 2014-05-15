@@ -48,12 +48,12 @@ div#loginBody, #registrationBody {
 	width : 500px;	
 }
 
-#validationPanel {
+#validationMessage {
 	padding:10px;
 	background-color : red;
 }
 
-#validationPanel.hidden {
+#validationMessage.hidden {
   	display : none;
   }
   

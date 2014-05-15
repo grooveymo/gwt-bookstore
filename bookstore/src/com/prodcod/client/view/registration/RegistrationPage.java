@@ -68,6 +68,8 @@ public class RegistrationPage extends Composite implements RegistrationView {
 	
 	public RegistrationPage() {
 		initWidget(uiBinder.createAndBindUi(this));
+		validationMessage.getElement().setId("validationMessage");
+		validationMessage.getElement().addClassName("hidden");
 	}
 
 
@@ -133,7 +135,11 @@ public class RegistrationPage extends Composite implements RegistrationView {
 	@Override
 	public void setValidationMessages(List<String> messages) {
 		
+		if(messages.size() > 0) {
+			validationMessage.removeStyleName("hidden");
+		}
 		validationMessage.clear();
+		
 		for (String mess : messages) {
             validationMessage.add(new Label(mess));
 		}
