@@ -36,6 +36,11 @@ h1 {
 /**********************************************************************************/
 /** BookStore styles **/
 /**********************************************************************************/
+div#loginBody, #registrationBody {
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+}
 
 #loginBody {
 	align : center;
