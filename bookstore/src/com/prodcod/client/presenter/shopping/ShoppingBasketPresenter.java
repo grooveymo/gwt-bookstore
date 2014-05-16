@@ -5,7 +5,6 @@ import com.prodcod.client.ClientFactoryImpl;
 import com.prodcod.client.event.AddToShoppingBasketEvent;
 import com.prodcod.client.event.AddToShoppingBasketEventHandler;
 import com.prodcod.client.event.NavigateToCheckoutPageEvent;
-import com.prodcod.client.event.NavigateToLoginPageEvent;
 import com.prodcod.client.event.RemoveFromShoppingBasketEvent;
 import com.prodcod.client.event.RemoveFromShoppingBasketEventHandler;
 import com.prodcod.shared.domain.Item;
@@ -17,6 +16,7 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 	
 	private final HandlerManager eventBus;
 
+	//Keeps count of number of items in basket
 	private int count = 0;
 	
 	public interface ShoppingBasketPanelView {

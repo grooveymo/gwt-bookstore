@@ -116,19 +116,19 @@ public class AppController implements PagePresenter, ValueChangeHandler<String> 
 			PagePresenter presenter = null;
 
 			if (token.equals("login")) {	        
-				LoginView loginView = new LoginPage();
+				LoginView loginView = ClientFactoryImpl.INSTANCE.getLoginPage();
 				presenter = new LoginPresenter(loginView, eventBus);			
 			}
 			else if (token.equals("registration")) {
-				RegistrationView registrationView = new RegistrationPage();
+				RegistrationView registrationView = ClientFactoryImpl.INSTANCE.getRegistrationPage();
 				presenter = new RegistrationPresenter(registrationView, eventBus);				
 			}
 			else if (token.equals("shopping")) {
-				ShoppingView shoppingView = new ShoppingPage();
+				ShoppingView shoppingView = ClientFactoryImpl.INSTANCE.getShoppingPage();
 				presenter = new ShoppingPresenter(shoppingView, eventBus);				
 			}
 			else if (token.equals("checkout")) {
-				CheckoutView checkoutView = new CheckoutPage();
+				CheckoutView checkoutView = ClientFactoryImpl.INSTANCE.getCheckoutPage();
 				presenter = new CheckoutPresenter(checkoutView, eventBus);				
 			}
 
@@ -170,7 +170,6 @@ public class AppController implements PagePresenter, ValueChangeHandler<String> 
 		eventBus.addHandler(NavigateToRegisterNewUserPageEvent.TYPE,
 				new NavigateToRegisterNewUserPageEventHandler() {
 			public void onRegisterNewUser(NavigateToRegisterNewUserPageEvent event) {
-				//	                doEditContact(event.getId());
 				History.newItem("registration");		
 			}
 		});  
@@ -179,7 +178,6 @@ public class AppController implements PagePresenter, ValueChangeHandler<String> 
 		eventBus.addHandler(NavigateToShoppingPageEvent.TYPE,
 				new NavigateToShoppingPageEventHandler() {
 			public void onDisplayShoppingPage(NavigateToShoppingPageEvent event) {
-				//	                doEditContact(event.getId());
 				History.newItem("shopping");		
 			}
 		});  

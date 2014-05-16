@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -38,6 +39,9 @@ public class ShoppingPresenter implements PagePresenter{
 
 	private final ShoppingView shoppingPage;
 
+	private HandlerRegistration addItemHandler;
+	private HandlerRegistration removeItemHandler;
+	
 	public ShoppingPresenter(ShoppingView shoppingPage, HandlerManager eventBus) {
 		this.shoppingPage = shoppingPage;		
 		this.eventBus = eventBus;
@@ -54,8 +58,17 @@ public class ShoppingPresenter implements PagePresenter{
 
 	@Override
 	public void bind() {
-		eventBus.addHandler(AddToShoppingBasketEvent.TYPE, shoppingPage.getShoppingBasketPresenter());  
-		eventBus.addHandler(RemoveFromShoppingBasketEvent.TYPE, shoppingPage.getShoppingBasketPresenter());  
+//		eventBus.removeHandler(AddToShoppingBasketEvent.TYPE, addItemHandler);
+		
+		if(addItemHandler != null) {
+			addItemHandler.removeHandler();			
+		}
+		if(removeItemHandler != null) {
+			removeItemHandler.removeHandler();			
+		}
+		
+		addItemHandler = eventBus.addHandler(AddToShoppingBasketEvent.TYPE, shoppingPage.getShoppingBasketPresenter());  
+		removeItemHandler = eventBus.addHandler(RemoveFromShoppingBasketEvent.TYPE, shoppingPage.getShoppingBasketPresenter());  
 	}
 
 
