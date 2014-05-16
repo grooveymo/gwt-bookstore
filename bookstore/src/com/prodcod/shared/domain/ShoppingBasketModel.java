@@ -17,8 +17,11 @@ public class ShoppingBasketModel implements Serializable{
 
 	private Map<Item, OrderItem> basketItems;
 	
+	private int numberOfItems;
+	
 	public ShoppingBasketModel() {
 		basketItems = new HashMap<Item, OrderItem>();
+		numberOfItems = 0;
 	}
 
 	/**
@@ -28,6 +31,8 @@ public class ShoppingBasketModel implements Serializable{
 	 */
 	public OrderItem addToBasket(final Item item) {
 				
+		numberOfItems++;
+		
 		OrderItem orderItem = basketItems.get(item);
 		
 		if(orderItem == null) {
@@ -42,7 +47,9 @@ public class ShoppingBasketModel implements Serializable{
 	}
 	
 	public OrderItem removeFromBasket(final Item item) {
-			
+
+		numberOfItems--;
+
 		OrderItem orderItem = basketItems.get(item);
 		
 		if (orderItem.isLastOne()) {
@@ -57,6 +64,10 @@ public class ShoppingBasketModel implements Serializable{
 	
 	public List<OrderItem> getOrderItems() {
 		return new ArrayList<OrderItem>(basketItems.values());
+	}
+
+	public int getNumberOfItems() {
+		return numberOfItems;
 	}
 	
 }

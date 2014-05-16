@@ -78,7 +78,9 @@ public class CheckoutPage extends Composite implements CheckoutView{
 
 	@Override
 	public void initialiseDisplay(List<OrderItem> orderItems) {
-	
+
+		orderItemsPanel.clear();
+
 		for(OrderItem orderItem : orderItems) {
 	
 			final Item item = orderItem.getItem();

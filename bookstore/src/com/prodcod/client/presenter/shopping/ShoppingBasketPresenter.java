@@ -16,9 +16,7 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 	
 	private final HandlerManager eventBus;
 
-	//Keeps count of number of items in basket
-	private int count = 0;
-	
+	//Declare interface for corresponding View
 	public interface ShoppingBasketPanelView {
 		void addItemToBasket(final OrderItem item);
 		void removeItemFromBasket(final OrderItem item);
@@ -36,8 +34,6 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 	@Override
 	public void onAddToBasket(AddToShoppingBasketEvent event) {
 
-		count++;
-		
 		final Item item = event.getItemToBeAdded();
 
 		//update model
@@ -51,7 +47,7 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 			view.addItemToBasket(orderItem);		
 		} 
 	
-		view.updateCount(count);
+		view.updateCount(ClientFactoryImpl.INSTANCE.getShoppingBasketModel().getNumberOfItems());
 
 	}
 
@@ -61,8 +57,6 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 	 * @param item
 	 */
 	public void removeFromBasket(final Item item) {
-		
-		count--;
 		
 		final RemoveFromShoppingBasketEvent event = new RemoveFromShoppingBasketEvent();
 		event.setItemToBeRemoved(item);
@@ -84,7 +78,7 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 			view.updateItemInBasket(orderItem);
 		}
 
-		view.updateCount(count);
+		view.updateCount(ClientFactoryImpl.INSTANCE.getShoppingBasketModel().getNumberOfItems());
 	}
 
 	/**

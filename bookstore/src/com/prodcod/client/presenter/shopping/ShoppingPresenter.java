@@ -39,8 +39,8 @@ public class ShoppingPresenter implements PagePresenter{
 
 	private final ShoppingView shoppingPage;
 
-	private HandlerRegistration addItemHandler;
-	private HandlerRegistration removeItemHandler;
+	private static HandlerRegistration addItemHandler;
+	private static HandlerRegistration removeItemHandler;
 	
 	public ShoppingPresenter(ShoppingView shoppingPage, HandlerManager eventBus) {
 		this.shoppingPage = shoppingPage;		
