@@ -253,3 +253,15 @@ input[type=radio]:checked + label {
 
 /**end **/
 /**************** following styles from : http://viralpatel.net/blogs/css-radio-button-checkbox-background/ *************/
+
+
+
+/*
+popup style from http://c.gwt-examples.com/home/ui/popup
+
+*/
+.gwt-PopupPanelGlass {
+  opacity:0.3;
+  filter:alpha(opacity=30);
+  background-color: grey;
+}

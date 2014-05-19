@@ -5,7 +5,10 @@ import java.util.List;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.PopupPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.prodcod.client.ClientFactoryImpl;
 import com.prodcod.client.event.RemoveFromShoppingBasketEvent;
@@ -26,6 +29,8 @@ public class CheckoutPresenter implements PagePresenter, RemoveFromShoppingBaske
 		void removeItemFromBasket(final OrderItem orderItem);
 
 		void updateItemInBasket(final OrderItem orderItem);
+		
+		void displayOrderConfirmationPopup(final List<OrderItem> orderItems);
 		
 		Widget asWidget();
 	}
@@ -84,9 +89,6 @@ public class CheckoutPresenter implements PagePresenter, RemoveFromShoppingBaske
 
 		final OrderItem orderItem = event.getItemToBeRemoved();
 		
-//		//update model
-//		final OrderItem orderItem = ClientFactoryImpl.INSTANCE.getShoppingBasketModel().removeFromBasket(item);
-
 		//update view
 		if (orderItem.getCount() == 0) {
 			checkoutPage.removeItemFromBasket(orderItem);
@@ -98,5 +100,17 @@ public class CheckoutPresenter implements PagePresenter, RemoveFromShoppingBaske
 //		checkoutPage.updateCount(ClientFactoryImpl.INSTANCE.getShoppingBasketModel().getNumberOfItems());
 
 		
+	}
+
+	/**
+	 * Customer has placed order. Display dialog to confirm this
+	 */
+	public void completeOrder() {
+		checkoutPage.displayOrderConfirmationPopup(ClientFactoryImpl.INSTANCE.getShoppingBasketModel().getOrderItems());
+	}
+	
+	
+	public void logout() {
+		History.newItem("login");
 	}
 }
