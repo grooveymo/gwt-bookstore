@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.prodcod.client.presenter.registration.CheckoutPresenter;
 import com.prodcod.client.presenter.registration.CheckoutPresenter.CheckoutView;
+import com.prodcod.client.view.shopping.ShoppingBasketItem;
 import com.prodcod.shared.domain.Book;
 import com.prodcod.shared.domain.Item;
 import com.prodcod.shared.domain.MusicCD;
@@ -99,10 +100,36 @@ public class CheckoutPage extends Composite implements CheckoutView{
 
 			
 			OrderItemWidget widget = new OrderItemWidget(title, originator, price, orderItem);
+			widget.setPresenter(presenter);
 			
 			orderItemsPanel.add(widget);
 			map.put(orderItem, widget);
 		}
 	}
+
+
+	@Override
+	public void removeItemFromBasket(final OrderItem orderItem) {
+
+		final OrderItemWidget basketItem = map.get(orderItem);
+		
+		orderItemsPanel.remove(basketItem);
+
+		map.remove(orderItem);
+
+	}
+	
+	
+
+
+	@Override
+	public void updateItemInBasket(final OrderItem orderItem) {
+		
+		final OrderItemWidget basketItem = map.get(orderItem);
+		
+		basketItem.updateQuantity();		
+	}
+
+
 
 }

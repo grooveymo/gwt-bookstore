@@ -1,13 +1,13 @@
 package com.prodcod.client.event;
 
 import com.google.gwt.event.shared.GwtEvent;
-import com.prodcod.shared.domain.Item;
+import com.prodcod.shared.domain.OrderItem;
 
 public class RemoveFromShoppingBasketEvent  extends GwtEvent<RemoveFromShoppingBasketEventHandler> {
 
 	public static Type<RemoveFromShoppingBasketEventHandler> TYPE = new Type<RemoveFromShoppingBasketEventHandler>();
 	  
-	  private Item itemToBeRemoved;
+	  private OrderItem itemToBeRemoved;
 	  
 	  @Override
 	  public Type<RemoveFromShoppingBasketEventHandler> getAssociatedType() {
@@ -19,11 +19,11 @@ public class RemoveFromShoppingBasketEvent  extends GwtEvent<RemoveFromShoppingB
 	    handler.onRemoveFromBasket(this);
 	  }
 
-	public Item getItemToBeRemoved() {
+	public OrderItem getItemToBeRemoved() {
 		return itemToBeRemoved;
 	}
 
-	public void setItemToBeRemoved(Item itemToBeRemove) {
+	public void setItemToBeRemoved(OrderItem itemToBeRemove) {
 		this.itemToBeRemoved = itemToBeRemove;
 	}
 

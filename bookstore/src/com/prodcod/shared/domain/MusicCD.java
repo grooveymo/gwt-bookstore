@@ -47,4 +47,9 @@ public class MusicCD extends Item{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + " MusicCD [artist=" + artist + "]";
+	}
 }

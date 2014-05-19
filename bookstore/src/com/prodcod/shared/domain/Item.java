@@ -97,6 +97,12 @@ public class Item implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Item [title=" + title + ", publisher=" + publisher + ", price="
+				+ price + ", yearPublished=" + yearPublished + "]";
+	}
 	
 	
 	

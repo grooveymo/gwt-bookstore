@@ -57,18 +57,21 @@ public class ShoppingBasketPresenter implements AddToShoppingBasketEventHandler,
 	 * @param item
 	 */
 	public void removeFromBasket(final Item item) {
-		
+
+		//update model
+		final OrderItem orderItem = ClientFactoryImpl.INSTANCE.getShoppingBasketModel().removeFromBasket(item);
+
 		final RemoveFromShoppingBasketEvent event = new RemoveFromShoppingBasketEvent();
-		event.setItemToBeRemoved(item);
+		event.setItemToBeRemoved(orderItem);
 		eventBus.fireEvent(event);
 	}
 
 	@Override
 	public void onRemoveFromBasket(RemoveFromShoppingBasketEvent event) {
-		final Item item = event.getItemToBeRemoved();
+		final OrderItem orderItem = event.getItemToBeRemoved();
 		
-		//update model
-		final OrderItem orderItem = ClientFactoryImpl.INSTANCE.getShoppingBasketModel().removeFromBasket(item);
+//		//update model
+//		final OrderItem orderItem = ClientFactoryImpl.INSTANCE.getShoppingBasketModel().removeFromBasket(item);
 
 		//update view
 		if (orderItem.getCount() == 0) {

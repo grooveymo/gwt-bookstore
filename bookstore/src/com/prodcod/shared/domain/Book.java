@@ -47,6 +47,11 @@ public class Book extends Item{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + " Book [author=" + author + "]";
+	}
 	
 	
 }

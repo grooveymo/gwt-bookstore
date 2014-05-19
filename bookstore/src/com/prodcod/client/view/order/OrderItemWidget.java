@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.prodcod.client.presenter.registration.CheckoutPresenter;
 import com.prodcod.shared.domain.Item;
 import com.prodcod.shared.domain.OrderItem;
 
@@ -42,6 +43,8 @@ public class OrderItemWidget extends Composite{
 
 	private final OrderItem orderItem;
 	
+	private CheckoutPresenter presenter;
+	
 	//TODO ; refactor to remove fields and just use OrderItem class
 	public OrderItemWidget(final String title, final String originator, final String price, final OrderItem item) {
 
@@ -53,15 +56,19 @@ public class OrderItemWidget extends Composite{
 		originatorField.setInnerHTML(ARTIST + originator);
 		priceField.setInnerHTML(PRICE + price);
 		quantityField.setInnerHTML(QUANTITY + orderItem.getCount());
-
-//		orderItemfieldsPanel.addStyleName("basketItem");
-
 		orderItemContainer.addStyleName("orderItemContainer");
 	}
 
+	public void setPresenter(CheckoutPresenter presenter) {
+		this.presenter = presenter;
+	}
+	
 	@UiHandler("removeButton")
 	void onClick(ClickEvent e) {
-		Window.alert("Hello!");
+		presenter.removeItem(orderItem);
 	}
 
+	public void updateQuantity() {
+		quantityField.setInnerHTML(QUANTITY + orderItem.getCount());
+	}
 }

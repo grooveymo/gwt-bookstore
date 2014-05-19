@@ -41,7 +41,6 @@ public class OrderItem implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + count;
 		result = prime * result + ((item == null) ? 0 : item.hashCode());
 		return result;
 	}
@@ -55,14 +54,17 @@ public class OrderItem implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		OrderItem other = (OrderItem) obj;
-		if (count != other.count)
-			return false;
 		if (item == null) {
 			if (other.item != null)
 				return false;
 		} else if (!item.equals(other.item))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderItem [item=" + item + ", count=" + count + "]";
 	}
 
 }
