@@ -70,6 +70,21 @@ public class RegistrationPage extends Composite implements RegistrationView {
 		initWidget(uiBinder.createAndBindUi(this));
 		validationMessage.getElement().setId("validationMessage");
 		validationMessage.getElement().addClassName("hidden");
+		
+//		validationMessage.addStyleName("alert alert-danger");
+		validationMessage.addStyleName("alert alert-warning");
+
+		forename.addStyleName("form-control");
+		surname.addStyleName("form-control");
+		firstLineAddress.addStyleName("form-control");
+		city.addStyleName("form-control");
+		postalCode.addStyleName("form-control");
+		phone.addStyleName("form-control");
+		email.addStyleName("form-control");		
+		password.addStyleName("form-control");
+		confirmPassword.addStyleName("form-control");
+		
+
 	}
 
 
@@ -141,7 +156,10 @@ public class RegistrationPage extends Composite implements RegistrationView {
 		validationMessage.clear();
 		
 		for (String mess : messages) {
-            validationMessage.add(new Label(mess));
+			Label label = new Label(mess);
+//			label.addStyleName("alert alert-warning");
+			label.addStyleName("alert alert-danger");
+           validationMessage.add(label);
 		}
 	}
 

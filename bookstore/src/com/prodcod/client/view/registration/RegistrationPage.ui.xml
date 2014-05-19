@@ -7,64 +7,100 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<div id='registrationBody'>
-		
-		<div id='validationPanel'>
-			<g:HTMLPanel ui:field="validationMessage" /> 
-		</div>
-		
-		<div id='userDetails'>
-			<div id='forenamePanel'>
-				<g:Label>Forename: </g:Label>				
-				<g:TextBox ui:field="forename" />							
-			</div>		
-			<div id='surnamePanel'>
-				<g:Label>Surname: </g:Label>				
-				<g:TextBox ui:field="surname" />							
-			</div>					
-			<div id='addressPanel'>
-				<g:Label>First Line of Address: </g:Label>				
-				<g:TextBox ui:field="firstLineAddress" />
-			</div>		
-			<div id='cityPanel'>
-				<g:Label>City: </g:Label>				
-				<g:TextBox ui:field="city" />							
-			</div>		
-			<div id='postcodePanel'>
-				<g:Label>Postal code: </g:Label>				
-				<g:TextBox ui:field="postalCode" />							
-			</div>					
-			<div id='emailPanel'>
-				<g:Label>Email: </g:Label>				
-				<g:TextBox ui:field="email" />							
-			</div>		
-			<div id='phonePanel'>
-				<g:Label>Phone: </g:Label>				
-				<g:TextBox ui:field="phone" />							
-			</div>					
-		</div>
+		<div id='registrationBody' class='container'>
 
-		<div id='accountDetails'>
-			<div id='passwordPanel'>
-				<g:Label>Password: </g:Label>				
-				<g:TextBox ui:field="password" />
+			<div id='validationPanel'>
+				<g:HTMLPanel ui:field="validationMessage" />
 			</div>
-			<div id='passwordConfirmPanel'>
-				<g:Label>Confirm Password: </g:Label>				
-				<g:TextBox ui:field="confirmPassword" />
-			</div>							
+
+			<div class="panel panel-default">
+
+				<div class="panel-heading">
+					<h1>Registration</h1>
+				</div>
+				<div class="panel-body">
+
+					<form class='form-horizontal'>
+
+						<div id='userDetails'>
+							<div id='forenamePanel' class='form-group'>
+								<label class="col-sm-2 control-label">Forename: </label>
+								<div class='col-sm-10'>
+									<g:TextBox ui:field="forename" />
+								</div>
+
+							</div>
+
+							<div id='surnamePanel' class='form-group'>
+								<label class="col-sm-2 control-label">Surname: </label>
+								<div class='col-sm-10'>
+									<g:TextBox ui:field="surname" />
+								</div>
+							</div>
+							<div id='addressPanel' class='form-group'>
+								<label class="col-sm-2 control-label">First Line of Address: </label>
+								<div class='col-sm-10'>
+									<g:TextBox ui:field="firstLineAddress" />
+								</div>
+							</div>
+							<div id='cityPanel' class='form-group'>
+								<label class="col-sm-2 control-label">City: </label>
+								<div class='col-sm-10'>
+									<g:TextBox ui:field="city" />
+								</div>
+							</div>
+
+							<div id='postcodePanel' class='form-group'>
+								<label class="col-sm-2 control-label">Postal code: </label>
+								<div class='col-sm-10'>
+									<g:TextBox ui:field="postalCode" />
+								</div>
+							</div>
+							<div id='emailPanel' class='form-group'>
+								<label class="col-sm-2 control-label">email: </label>
+								<div class='col-sm-10'>
+									<g:TextBox ui:field="email" />
+								</div>
+							</div>
+							<div id='phonePanel' class='form-group'>
+								<label class="col-sm-2 control-label">Phone: </label>
+								<div class='col-sm-10'>
+									<g:TextBox ui:field="phone" />
+								</div>
+							</div>
+						</div>
+
+						<div id='accountDetails'>
+							<div id='passwordPanel' class='form-group'>
+								<label class="col-sm-2 control-label">Password: </label>
+								<div class='col-sm-10'>
+									<g:TextBox ui:field="password" />
+								</div>
+							</div>
+							<div id='passwordConfirmPanel' class='form-group'>
+								<label class="col-sm-2 control-label">Confirm Password: </label>
+								<div class='col-sm-10'>
+									<g:TextBox ui:field="confirmPassword" />
+								</div>
+							</div>
+						</div>
+
+
+						<!-- <p class='textbox'> This is a test message. See ref: http://scratch99.com/wordpress/hacks/wordpress-simple-css-text-boxes-in-posts/ 
+							</p> -->
+						<div id='submitPanel' class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<g:Button ui:field='submitButton'>submit</g:Button>
+							</div>
+						</div>
+
+					</form>
+
+				</div>
+			</div>
+
 		</div>
 
-	<p class='textbox'>
-		This is a test message. See ref: http://scratch99.com/wordpress/hacks/wordpress-simple-css-text-boxes-in-posts/
-	</p>				
-		
-		<div id='submitPanel'>
-			<g:Button ui:field='submitButton'>submit</g:Button>
-		</div>
-		
-	</div>
-	
-	
+
 	</g:HTMLPanel>
 </ui:UiBinder> 

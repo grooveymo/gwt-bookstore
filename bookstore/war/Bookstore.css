@@ -53,10 +53,13 @@ div#loginBody, #registrationBody {
 }
 */
 
+/*
 #validationMessage {
 	padding:10px;
 	background-color : red;
 }
+*/
+
 
 #validationMessage.hidden {
   	display : none;
