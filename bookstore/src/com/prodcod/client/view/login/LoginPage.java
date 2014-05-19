@@ -46,9 +46,22 @@ public class LoginPage extends Composite implements LoginPresenter.LoginView{
 	
 	public LoginPage() {
 		initWidget(uiBinder.createAndBindUi(this));
-		userName.addStyleName("fieldInput");
-		password.addStyleName("fieldInput");
-		registrationLink.addStyleName("registrationPanel");
+		
+		
+		userName.setWidth("260px");
+		userName.addStyleName("form-control");
+
+		password.setWidth("260px");
+		password.addStyleName("form-control");
+
+		validationPanel.addStyleName("alert alert-danger");
+		//		registrationLink.addStyleName("btn");
+//		registrationLink.addStyleName("btn-large");
+//		registrationLink.addStyleName("btn-success");
+	
+
+		submitButton.addStyleName("btn btn-large btn-default");
+
 		validationPanel.getElement().setId("validationPanel");
 		validationPanel.addStyleName("hidden");
 

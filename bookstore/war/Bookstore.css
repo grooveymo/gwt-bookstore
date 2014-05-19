@@ -36,19 +36,22 @@ h1 {
 /**********************************************************************************/
 /** BookStore styles **/
 /**********************************************************************************/
+/*
 div#loginBody, #registrationBody {
 	margin-left: auto;
 	margin-right: auto;
 	width: 800px;
 	background-color: #c5c5c5;
 }
+*/
 
-
+/* bootstrap
 #loginBody {
 	align : center;
 	border : grey 1px solid;
 	width : 500px;	
 }
+*/
 
 #validationMessage {
 	padding:10px;
@@ -67,6 +70,8 @@ div#loginBody, #registrationBody {
 	padding : 10px;
 }
 
+/*bootstrap
+
 span .fieldName {
   width: 30%;
   float: left;
@@ -78,6 +83,7 @@ span .fieldName {
     margin-left: 10px;
     float:right;
 }
+*/
 
 #passwordPanel {
 	padding : 10px;
@@ -89,10 +95,12 @@ a .registrationPanel {
 	float: right;
 }
 
+/*
 #submitPanel {
 	clear: both;
 	padding:10px;
 }
+*/
 
 #itemsPanel {
    margin-left : auto;
@@ -107,11 +115,6 @@ a .registrationPanel {
 	float: left;
 	width : 70%;
 	
-/*   
-   border: 1px solid #cccfff;
-   border: 1px solid red;
-
-*/
    padding : 20px;   
    margin-bottom : 20px;
       background-color: #ccccccc;
@@ -264,4 +267,10 @@ popup style from http://c.gwt-examples.com/home/ui/popup
   opacity:0.3;
   filter:alpha(opacity=30);
   background-color: grey;
+}
+
+
+/********** after adding bootstrap ****/
+.spacer {
+    margin-top: 10px; /* define margin as you see fit */
 }
