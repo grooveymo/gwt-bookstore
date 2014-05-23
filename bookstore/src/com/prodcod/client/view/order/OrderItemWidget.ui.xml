@@ -6,17 +6,32 @@
 		font-weight: bold;
 	}
 	</ui:style>
-	<g:HTMLPanel ui:field='orderItemContainer'>
-		
+	<g:HTMLPanel tag='div' ui:field='orderItemContainer'>
+
 		<g:HTMLPanel tag='div' ui:field="orderItemfieldsPanel">
-			<span ui:field="titleField" />
-			<span ui:field="originatorField" />
-			<span ui:field="priceField" />
-			<span ui:field="quantityField" />
+
+			<ul class='list-group'>
+				<li class='list-group-item'>
+					<span class='label label-info'>Title: </span>
+					<span ui:field="titleField" />
+				</li>
+				<li class='list-group-item'>
+					<span class='label label-info'>Author/Artist: </span>
+					<span ui:field="originatorField" />
+				</li>
+				<li class='list-group-item'>
+					<span class='label label-info'>Price: </span>
+					<span ui:field="priceField" />
+				</li>
+				<li class='list-group-item'>
+					<span class='label label-info'>Quantity: </span>
+					<span ui:field="quantityField" />
+				</li>
+			</ul>
 		</g:HTMLPanel>
 		<g:HTMLPanel tag='div' ui:field="buttonPanel">
-			<g:Button styleName="{style.important}" ui:field="removeButton" >Remove</g:Button>
+			<g:Button ui:field="removeButton">Remove</g:Button>
 		</g:HTMLPanel>
-		
+
 	</g:HTMLPanel>
 </ui:UiBinder> 

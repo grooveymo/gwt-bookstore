@@ -39,10 +39,6 @@ public class ShoppingBasketItem extends Composite {
 	private ShoppingBasketPresenter presenter;
 
 	private Item item;
-//	public ShoppingBasketItem() {
-//		initWidget(uiBinder.createAndBindUi(this));
-//		fieldsPanel.addStyleName("basketItem");
-//	}
 
 
 	//TODO ; refactor to remove fields and just use item class. Maybe use OrderItem and not Item class
@@ -56,15 +52,11 @@ public class ShoppingBasketItem extends Composite {
 		titlePanel.addStyleName("panel-heading");
 		
 
-//		titleField.setInnerHTML(TITLE + title);
 		titleField.setInnerHTML(title);
 		
-//		originatorField.setInnerHTML(ARTIST + originator);
 		originatorField.setInnerHTML(originator);
-//		priceField.setInnerHTML(PRICE + price);
 		priceField.setInnerHTML(price);
 		fieldsPanel.addStyleName("basketItem");
-//		quantityField.setInnerHTML(QUANTITY + " 1");
 		quantityField.setInnerHTML(" 1");
 		
 		removeButton.addStyleName("button button-warning");

@@ -33,7 +33,7 @@ public class OrderItemWidget extends Composite{
 	HTMLPanel orderItemContainer;
 
 	@UiField 
-	HTMLPanel orderItemfieldsPanel;
+	HTMLPanel orderItemfieldsPanel, buttonPanel;
 
 	@UiField
 	SpanElement titleField, originatorField, priceField, quantityField;
@@ -56,7 +56,10 @@ public class OrderItemWidget extends Composite{
 		originatorField.setInnerHTML(ARTIST + originator);
 		priceField.setInnerHTML(PRICE + price);
 		quantityField.setInnerHTML(QUANTITY + orderItem.getCount());
-		orderItemContainer.addStyleName("orderItemContainer");
+		orderItemContainer.addStyleName("panel panel-success");
+		
+		buttonPanel.addStyleName("panel-footer");
+
 	}
 
 	public void setPresenter(CheckoutPresenter presenter) {

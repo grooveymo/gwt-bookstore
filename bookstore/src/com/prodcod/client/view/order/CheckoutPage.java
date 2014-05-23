@@ -46,11 +46,11 @@ public class CheckoutPage extends Composite implements CheckoutView{
 	HTMLPanel checkoutPanel;
 
 	@UiField
-	HTMLPanel orderItemsPanel;
+	HTMLPanel orderItemsPanel, submitButtonPanel, summarySectionPanel;
 
 	@UiField
 	Button submitOrderButton;
-
+	
 	private CheckoutPresenter presenter;	
 
 	private Map<OrderItem, OrderItemWidget> map;
@@ -59,6 +59,18 @@ public class CheckoutPage extends Composite implements CheckoutView{
 		initWidget(uiBinder.createAndBindUi(this));
 		map = new HashMap<OrderItem, OrderItemWidget>();
 		checkoutPanel.getElement().setId("checkoutPanel");
+		
+		checkoutPanel.addStyleName("panel panel-primary");
+		
+		summarySectionPanel.addStyleName("panel panel-success");
+
+		submitButtonPanel.addStyleName("panel-footer");
+		
+		numItems.addStyleName("col-sm-2");
+		totalCost.addStyleName("col-sm-2");
+				
+//		submitOrderButton.addStyleName("btn btn-danger");
+		
 	}
 
 
@@ -85,12 +97,18 @@ public class CheckoutPage extends Composite implements CheckoutView{
 
 		orderItemsPanel.clear();
 
+		int numItemsValue = 0;
+		float totalCostValue = 0.0f;
+		
 		for(OrderItem orderItem : orderItems) {
 
 			final Item item = orderItem.getItem();
 			final String title = item.getTitle();
 			final String price = String.valueOf(item.getPrice());
-
+			
+			numItemsValue += orderItem.getCount();
+			totalCostValue += (numItemsValue * item.getPrice());
+					
 			String originator = "";
 			if(item.getClass() == Book.class) {
 				Book book = (Book)item;
@@ -108,6 +126,9 @@ public class CheckoutPage extends Composite implements CheckoutView{
 			orderItemsPanel.add(widget);
 			map.put(orderItem, widget);
 		}
+		
+		this.numItems.setText(String.valueOf(numItemsValue));
+		this.totalCost.setText(String.valueOf(totalCostValue));
 	}
 
 

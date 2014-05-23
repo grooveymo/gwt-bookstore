@@ -8,17 +8,39 @@
 	</ui:style>
 	<g:HTMLPanel ui:field="checkoutPanel">
 
-		<g:HTMLPanel ui:field='summarySectionPanel' >
-			<g:Label ui:field="numItems" />
-			<g:Label ui:field="totalCost" />
-		</g:HTMLPanel>
+		<div class='panel-heading'>
+			Order Summary
+		</div>
 
-		<g:ScrollPanel>
-			<g:HTMLPanel ui:field='orderItemsPanel' />
-		</g:ScrollPanel>
+		<div class='panel-body'>
 
+			<g:HTMLPanel ui:field='summarySectionPanel'>
+
+				<div class='panel-heading'>
+					<p>
+						Summary
+					</p>
+				</div>
+
+				<div class='row'>
+					<div>
+						<span class='col-sm-2'>Number of Items: </span>
+						<g:Label ui:field="numItems" />
+					</div>
+					<div>
+						<label class='col-sm-2'>Total Cost (£): </label>
+						<g:Label ui:field="totalCost" />
+					</div>
+
+				</div>
+			</g:HTMLPanel>
+
+			<g:ScrollPanel>
+				<g:HTMLPanel ui:field='orderItemsPanel' />
+			</g:ScrollPanel>
+		</div>
 		<g:HTMLPanel ui:field='submitButtonPanel'>
-			<g:Button styleName="{style.important}" ui:field="submitOrderButton" >Submit</g:Button>
+			<g:Button ui:field="submitOrderButton">Place Order</g:Button>
 		</g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
