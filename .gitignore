@@ -13,3 +13,7 @@ test-classes/
 #gwt
 gwt-unitCache/
 RemoteSystemsTempFiles/
+
+
+#general
+.DS_Store
