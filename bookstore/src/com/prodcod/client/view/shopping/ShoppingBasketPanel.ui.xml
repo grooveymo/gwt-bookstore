@@ -7,20 +7,19 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<h1>Shopping Basket</h1>
 		<g:ScrollPanel>
 			<g:HTMLPanel ui:field="ShoppingBasketItemsPanel">
 				<g:HTMLPanel tag='div' ui:field='numItemsPanel'>
 
 					<g:Image ui:field='basketImage' />
 
-					<span ui:field="numItems" />
+					<span ui:field="numItems" class='badge'/>
 				</g:HTMLPanel>
 
 			</g:HTMLPanel>
 		</g:ScrollPanel>
-		<g:HTMLPanel>
-			<g:Button styleName="{style.important}" ui:field="checkoutButton">checkout</g:Button>
+		<g:HTMLPanel tag='div' ui:field="checkoutButtonPanel">
+			<g:Button ui:field="checkoutButton">checkout</g:Button>
 		</g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -43,7 +43,7 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 	HTMLPanel ShoppingBasketItemsPanel;
 	
 	@UiField
-	HTMLPanel numItemsPanel;
+	HTMLPanel numItemsPanel, checkoutButtonPanel;
 
 	@UiField
 	Image basketImage;
@@ -65,6 +65,11 @@ public class ShoppingBasketPanel extends Composite implements ShoppingBasketPane
 
 		numItemsPanel.getElement().setId("numItemsPanel");
 		checkoutButton.getElement().setId("checkoutButton");
+		
+		checkoutButton.removeStyleName("gwt-Button");
+		checkoutButton.addStyleName("btn btn-primary");
+
+		checkoutButtonPanel.getElement().setId("checkoutButtonPanel");
 	}
 
 

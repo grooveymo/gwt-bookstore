@@ -6,16 +6,50 @@
 		font-weight: bold;
 	}
 	</ui:style>
-	<g:HTMLPanel>
-		<g:HTMLPanel tag='div' ui:field="fieldsPanel">
+	<g:HTMLPanel tag='div' ui:field="containerPanel">
+
+		<g:HTMLPanel tag='div' ui:field="titlePanel">
 			<span ui:field="titleField" />
-			<span ui:field="originatorField" />
-			<span ui:field="priceField" />
-			<span ui:field="quantityField" />
 		</g:HTMLPanel>
-		<g:HTMLPanel tag='div' ui:field="buttonPanel">
-			<g:Button styleName="{style.important}" ui:field="removeButton" >remove</g:Button>
+
+		<g:HTMLPanel tag='div' ui:field="fieldsPanel">
+			<ul class='list-group'>
+				<li class='list-group-item'>
+					<div>
+						<span class='label label-info' >Author / Artist</span>
+						<span ui:field="originatorField" />
+					</div>
+
+				</li>
+
+				<li class='list-group-item'>
+				<div>
+					<span class='label label-info'>Price :</span>
+					<span ui:field="priceField" />
+				</div>
+
+				</li>
+				<li class='list-group-item'>
+					<div>
+						<span class='label label-info'>Quantity</span>
+						<span ui:field="quantityField" />
+					</div>
+
+				</li>
+
+			</ul>
+
+
+
+
 		</g:HTMLPanel>
+
+		<div id='submitPanel' class="form-group">
+			<div class="col-sm-offset-5">
+				<g:Button ui:field="removeButton">remove</g:Button>
+			</div>
+		</div>
+
 	</g:HTMLPanel>
 
 </ui:UiBinder> 

@@ -7,27 +7,36 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-	
-	<div  id='searchPanel'>
-		<div id='searchTextField'>
-			<span id='searchLabel' class="fieldName, left">Search: </span>				
-				
-			<g:TextBox ui:field="searchInput" />							
-				
-			<g:Button ui:field='searchButton'>Search</g:Button>
-		</div>
-		
-		<div id='radioButtonsPanel'>
-			<g:RadioButton ui:field="all" name='RB' checked='true'>All</g:RadioButton>
 
-			<g:RadioButton ui:field="title" name='RB'  checked='false'>Title</g:RadioButton>
-			<g:RadioButton ui:field="authorOrArtist" name='RB'  checked='false'>Author/Artist</g:RadioButton>
-			<g:RadioButton ui:field="publisher" name='RB'  checked='false'>Publisher</g:RadioButton>
+		<div id='searchPanel' class='panel panel-success'>
+
+			<form class='form-horizontal'>
+				<div id='searchTextField' class='form-group'>
+					<span id='searchLabel' class="col-sm-1 control-label">Search: </span>
+					<div class='col-sm-5'>
+						<g:TextBox ui:field="searchInput" />
+						<span class="glyphicon glyphicon-search" />
+
+					</div>
+
+					<div class='col-sm-5'>
+						<g:Button ui:field='searchButton'>Search</g:Button>
+					</div>
+				</div>
+
+				<div id='radioButtonsPanel'>
+					<g:RadioButton ui:field="all" name='RB' checked='true'>All</g:RadioButton>
+
+					<g:RadioButton ui:field="title" name='RB' checked='false'>Title</g:RadioButton>
+					<g:RadioButton ui:field="authorOrArtist" name='RB' checked='false'>Author/Artist</g:RadioButton>
+					<g:RadioButton ui:field="publisher" name='RB' checked='false'>Publisher</g:RadioButton>
+				</div>
+
+				<div id='resultsCountPanel'>
+					<span ui:field="resultsCount" class='badge' />
+				</div>
+			</form>
+
 		</div>
-		
-		<div id='resultsCountPanel'>
-			<span ui:field="resultsCount"/>
-		</div>
-	</div>		
 	</g:HTMLPanel>
 </ui:UiBinder> 

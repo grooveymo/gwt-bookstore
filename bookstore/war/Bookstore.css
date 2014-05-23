@@ -108,38 +108,47 @@ a .registrationPanel {
 #itemsPanel {
    margin-left : auto;
    margin-right : auto;
-   width : 1000px;
    height: 1000px;
+/*
+   width : 1000px;
+
    border: 5px solid #cccfff;
    background-color: #e5e5e5;
+   */
+   
 }
 
 #shopPanel {
 	float: left;
-	width : 70%;
-	
-   padding : 20px;   
+	width : 78%;
+	height: inherit;	
+   padding : 10px;   
    margin-bottom : 20px;
+   
+   /*
       background-color: #ccccccc;
+*/
    
 }
 
+
 #shoppingCartPanel {
 	float: right;
-	width : 20%;
-	border-left: 2px solid #cccfff;
+	width : 18%;
+/*	border-left: 2px solid #cccfff;*/
 	height: inherit;
 	overflow-y : auto;
+	/*
 	background-color: #b2b2b2;
+	*/
+	margin-right: 40px;
 }
-
 
 #tablePanel {
    margin-left : auto;
    margin-right : auto;
    height: 500px;
    border-left,border-top, border-right: 1px solid #cccfff;
-   border-bottom: 5px dashed #cccfff;
    padding : 20px;   
 }
 
@@ -175,7 +184,7 @@ a .registrationPanel {
    */
    padding :5px;   
    margin-top : 10px;
-   margin-left: 80px;
+   margin-left: 120px;
 }
 
 #resultsCountPanel {
@@ -185,7 +194,7 @@ a .registrationPanel {
    */
    padding :5px;   
    margin-top : 10px;
-   margin-left: 40px;
+   margin-left: 55px;
 }
 
 #shoppingBasketItemsPanel {
@@ -202,7 +211,6 @@ a .registrationPanel {
 #basketImage {
 	margin-left:20px;
 	padding: 10px;
-	display:block;
 }
 
 #numItemsPanel.span {
@@ -232,31 +240,34 @@ a .registrationPanel {
   Hide radio button (the round disc)
   we will use just the label to create pushbutton effect
 */
+/* 
 input[type=radio] {
     display:none; 
     margin:10px;
 }
- 
+ */ 
 /*
   Change the look'n'feel of labels (which are adjacent to radiobuttons).
   Add some margin, padding to label
 */
-input[type=radio] + label {
+/* input[type=radio] + label {
     display:inline-block;
     margin:-2px;
     padding: 4px 12px;
     background-color: #e7e7e7;
     border-color: #ddd;
 }
-/*
+ */
+ 
+ /*
  Change background color for label next to checked radio button
  to make it look like highlighted button
 */
-input[type=radio]:checked + label { 
+/* input[type=radio]:checked + label { 
    background-image: none;
     background-color:#d0d0d0;
 }
-
+ */
 /**end **/
 /**************** following styles from : http://viralpatel.net/blogs/css-radio-button-checkbox-background/ *************/
 
@@ -276,4 +287,12 @@ popup style from http://c.gwt-examples.com/home/ui/popup
 /********** after adding bootstrap ****/
 .spacer {
     margin-top: 10px; /* define margin as you see fit */
+}
+
+.shoppingBasketItemField {
+	display: block;
+}
+
+#checkoutButtonPanel {
+	padding: 10px;
 }

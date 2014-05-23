@@ -34,7 +34,7 @@ public class ShoppingBasketItem extends Composite {
 	SpanElement titleField, originatorField, priceField, quantityField;
 
 	@UiField 
-	HTMLPanel fieldsPanel;
+	HTMLPanel titlePanel, fieldsPanel, containerPanel;
 
 	private ShoppingBasketPresenter presenter;
 
@@ -51,12 +51,23 @@ public class ShoppingBasketItem extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		this.item = item;
+
+		containerPanel.addStyleName("panel panel-primary");
+		titlePanel.addStyleName("panel-heading");
 		
-		titleField.setInnerHTML(TITLE + title);
-		originatorField.setInnerHTML(ARTIST + originator);
-		priceField.setInnerHTML(PRICE + price);
+
+//		titleField.setInnerHTML(TITLE + title);
+		titleField.setInnerHTML(title);
+		
+//		originatorField.setInnerHTML(ARTIST + originator);
+		originatorField.setInnerHTML(originator);
+//		priceField.setInnerHTML(PRICE + price);
+		priceField.setInnerHTML(price);
 		fieldsPanel.addStyleName("basketItem");
-		quantityField.setInnerHTML(QUANTITY + " 1");
+//		quantityField.setInnerHTML(QUANTITY + " 1");
+		quantityField.setInnerHTML(" 1");
+		
+		removeButton.addStyleName("button button-warning");
 
 	}
 

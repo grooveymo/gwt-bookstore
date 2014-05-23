@@ -40,8 +40,15 @@ public class SearchPanel extends Composite {
 	public SearchPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
 		searchInput.addStyleName("middle");
-		searchButton.addStyleName("right");
+
+		searchButton.removeStyleName("gwt-Button");
+		searchButton.addStyleName("btn btn-primary");
 		resultsCount.setId("resultsCountPanel");
+		
+		all.addStyleName("checkbox-inline");
+		title.addStyleName("checkbox-inline");
+		authorOrArtist.addStyleName("checkbox-inline");
+		publisher.addStyleName("checkbox-inline");
 	}
 
 

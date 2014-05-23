@@ -9,13 +9,15 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-	<H1 id = 'pageTitle'>Shop Catalogue</H1>
+
 		<g:HTMLPanel tag ='div' ui:field='itemsPanel'>
-			<div id='shopPanel'>
+			<div id='shopPanel' class='panel panel-primary'>
+				<h1 class='panel-heading'>Shop Catalogue </h1>
 				<h:SearchPanel ui:field="searchPanel" />		
 				<g:ResizeLayoutPanel ui:field="tablePanel" />
 			</div>			
-			<div id='shoppingCartPanel' >
+			<div id='shoppingCartPanel' class='panel panel-info'>
+				<h1 class='panel-heading'>Shopping Basket </h1>
 				<h:ShoppingBasketPanel ui:field="shoppingBasketPanel"/>
 			</div>
 		</g:HTMLPanel>

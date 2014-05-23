@@ -8,6 +8,9 @@ import com.google.gwt.cell.client.ImageResourceCell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.resources.client.ImageResource;
+import com.google.gwt.safehtml.shared.SafeHtml;
+import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.Column;
@@ -195,14 +198,35 @@ public class ShoppingPage extends Composite implements ShoppingView{
 	 */
 	public Column<Item, String> createButtonColumn() {
 
-		ButtonCell buttonCell = new ButtonCell();
+		ButtonCell buttonCell = new ButtonCell(){
+			
+			//Be sure to override the rendering of the button so that we can use twitter styles
+			@Override
+            public void render(
+                final Context context,
+                String data,
+                final SafeHtmlBuilder sb) {
+              sb.appendHtmlConstant("<button type=\"button\" class=\"btn btn-warning\" tabindex=\"-1\">");
+              if (data != null) {
+            	  SafeHtml safeValue = SafeHtmlUtils.fromString(data);
+                sb.append(safeValue);
+              }
+              sb.appendHtmlConstant("</button>");
+            }
+
+		};
+		
+		
+		
 		Column<Item, String> buttonColumn = new Column<Item, String>(buttonCell) {
 			@Override
 			public String getValue(Item object) {
 				// The value to display in the button.
 				return "add";
-			}
+			}			
+					
 		};
+
 
 		//attach behaviour
 		buttonColumn.setFieldUpdater(new FieldUpdater<Item, String>() {
