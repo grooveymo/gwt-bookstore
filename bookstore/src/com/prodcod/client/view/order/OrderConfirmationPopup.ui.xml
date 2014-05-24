@@ -7,7 +7,17 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:HTMLPanel ui:field='panel'/>
-		<g:Button styleName="{style.important}" ui:field="okButton" >Ok</g:Button>
+		<g:HTMLPanel ui:field='panel'>
+			<div class='panel panel-success'>
+				<div class='panel-heading'>
+					Congratulations !
+				</div>
+
+				<div class='panel-body'>
+					Your order has been successfully placed. Please check your email
+				</div>
+			</div>
+		</g:HTMLPanel>
+		<g:Button ui:field="okButton">Ok</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder> 

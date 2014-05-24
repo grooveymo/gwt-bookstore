@@ -7,7 +7,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -31,21 +30,18 @@ public class OrderConfirmationPopup extends DialogBox {
 	HTMLPanel panel;
 
 	private CheckoutPresenter presenter;
-	
+
+	//TODO - no longer need to pass in orderitems
 	public OrderConfirmationPopup(List<OrderItem> orderItems) {
 
 		super(false, true);
 
 		setWidget(uiBinder.createAndBindUi(this));
 
-		setGlassEnabled(true);	
-		
-		//add basket items
-		for(OrderItem orderItem : orderItems) {			
-			PurchasedOrderItemWidget widget = new PurchasedOrderItemWidget(orderItem);			
-			panel.add(widget);		
-		}
+		okButton.removeStyleName("gwt-Button");
+		okButton.addStyleName("btn btn-primary");
 
+		setGlassEnabled(true);	
 
 	}
 
