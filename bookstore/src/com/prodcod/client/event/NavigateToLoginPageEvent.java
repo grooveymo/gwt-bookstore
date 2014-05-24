@@ -4,7 +4,7 @@ import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * Event that get's fired when we want to navigate to Login Page
- * @author BruceWayne
+ * @author mo sayed
  *
  */
 public class NavigateToLoginPageEvent extends GwtEvent<NavigateToLoginPageEventHandler> {
