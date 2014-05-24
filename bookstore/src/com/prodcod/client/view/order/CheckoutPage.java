@@ -69,8 +69,8 @@ public class CheckoutPage extends Composite implements CheckoutView{
 		numItems.addStyleName("col-sm-2");
 		totalCost.addStyleName("col-sm-2");
 				
-//		submitOrderButton.addStyleName("btn btn-danger");
-		
+		submitOrderButton.removeStyleName("gwt-Button");
+		submitOrderButton.addStyleName("btn btn-primary");
 	}
 
 

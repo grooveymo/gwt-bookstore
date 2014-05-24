@@ -58,6 +58,8 @@ public class OrderItemWidget extends Composite{
 		quantityField.setInnerHTML(QUANTITY + orderItem.getCount());
 		orderItemContainer.addStyleName("panel panel-success");
 		
+		removeButton.addStyleName("btn btn-warning");
+		removeButton.removeStyleName("gwt-Button");
 		buttonPanel.addStyleName("panel-footer");
 
 	}
