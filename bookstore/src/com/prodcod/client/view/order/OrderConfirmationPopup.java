@@ -11,7 +11,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.prodcod.client.presenter.registration.CheckoutPresenter;
+import com.prodcod.client.presenter.order.CheckoutPresenter;
 import com.prodcod.shared.domain.OrderItem;
 
 public class OrderConfirmationPopup extends DialogBox {
